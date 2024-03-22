@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbfl32aq4ax1p"]
+
+[ext_resource type="Texture2D" uid="uid://bl38w8qnsowyq" path="res://assets/small_character.png" id="1_cdag2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_nypau"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1yuv"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_nypau")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cdag2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u1yuv")
+
+[node name="JumpTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

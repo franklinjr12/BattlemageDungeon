@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckpg45e3ditm3"]
+
+[ext_resource type="PackedScene" uid="uid://cbfl32aq4ax1p" path="res://scenes/player.tscn" id="1_fd7xr"]
+[ext_resource type="PackedScene" uid="uid://cyl4tbv3iftw" path="res://scenes/basic_platform.tscn" id="2_stxbp"]
+
+[node name="world" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_fd7xr")]
+position = Vector2(275, 174)
+PLAYER_JUMP_VALUE = -2000
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_stxbp")]
+position = Vector2(518, 504)
+scale = Vector2(10, 1)
+
+[node name="BasicPlatform" parent="." instance=ExtResource("2_stxbp")]
+position = Vector2(726, 421)
+
+[node name="BasicPlatform2" parent="." instance=ExtResource("2_stxbp")]
+position = Vector2(547, 425)
+
+[node name="BasicPlatform3" parent="." instance=ExtResource("2_stxbp")]
+position = Vector2(393, 435)
+
+[node name="BasicPlatform4" parent="." instance=ExtResource("2_stxbp")]
+position = Vector2(176, 432)

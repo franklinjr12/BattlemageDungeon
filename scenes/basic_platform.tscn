@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyl4tbv3iftw"]
+
+[ext_resource type="Texture2D" uid="uid://cvfcox2lr8tk0" path="res://assets/progress_bar.png" id="1_tkipe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etkxg"]
+size = Vector2(97, 39)
+
+[node name="BasicPlatform" type="StaticBody2D"]
+position = Vector2(98, 212)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_etkxg")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tkipe")
+metadata/_edit_lock_ = true
