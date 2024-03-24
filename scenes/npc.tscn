@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8ddsp1rokso7"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ddsp1rokso7"]
 
 [ext_resource type="Texture2D" uid="uid://ducdnicy2y3g1" path="res://assets/big_demon_run_anim_f3.png" id="1_cy5hd"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_obk1u"]
+[ext_resource type="PackedScene" uid="uid://cxqpy801bl3o5" path="res://scenes/health_bar.tscn" id="2_sgbx8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
 height = 26.0
@@ -17,3 +18,9 @@ metadata/_edit_lock_ = true
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_cjv7n")
 metadata/_edit_lock_ = true
+
+[node name="HealthBar" parent="." instance=ExtResource("2_sgbx8")]
+offset_left = -18.0
+offset_top = -30.0
+offset_right = 18.0
+offset_bottom = -16.0
