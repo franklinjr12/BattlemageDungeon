@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckpg45e3ditm3"]
+[gd_scene load_steps=4 format=3 uid="uid://ckpg45e3ditm3"]
 
 [ext_resource type="PackedScene" uid="uid://cbfl32aq4ax1p" path="res://scenes/player.tscn" id="1_fd7xr"]
 [ext_resource type="PackedScene" uid="uid://cyl4tbv3iftw" path="res://scenes/basic_platform.tscn" id="2_stxbp"]
+[ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="3_rqobg"]
 
 [node name="world" type="Node2D"]
 
@@ -28,3 +29,6 @@ scale = Vector2(1, 10)
 [node name="BasicPlatform5" parent="." instance=ExtResource("2_stxbp")]
 position = Vector2(1067, 305)
 scale = Vector2(1, 10)
+
+[node name="NPC" parent="." instance=ExtResource("3_rqobg")]
+position = Vector2(870, 440)
