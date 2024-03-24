@@ -13,14 +13,18 @@ PLAYER_JUMP_VALUE = -2000
 position = Vector2(518, 504)
 scale = Vector2(10, 1)
 
-[node name="BasicPlatform" parent="." instance=ExtResource("2_stxbp")]
-position = Vector2(726, 421)
-
 [node name="BasicPlatform2" parent="." instance=ExtResource("2_stxbp")]
-position = Vector2(547, 425)
+position = Vector2(51, 414)
+scale = Vector2(1, 0.26)
 
 [node name="BasicPlatform3" parent="." instance=ExtResource("2_stxbp")]
-position = Vector2(393, 435)
+position = Vector2(100, 460)
+scale = Vector2(1, 0.31)
 
 [node name="BasicPlatform4" parent="." instance=ExtResource("2_stxbp")]
-position = Vector2(176, 432)
+position = Vector2(-31, 296)
+scale = Vector2(1, 10)
+
+[node name="BasicPlatform5" parent="." instance=ExtResource("2_stxbp")]
+position = Vector2(1067, 305)
+scale = Vector2(1, 10)
