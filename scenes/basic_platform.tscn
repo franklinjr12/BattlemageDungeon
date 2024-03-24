@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etkxg"]
 size = Vector2(97, 39)
 
-[node name="BasicPlatform" type="StaticBody2D"]
+[node name="BasicPlatform" type="StaticBody2D" groups=["staticObjects"]]
 position = Vector2(98, 212)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -55,7 +55,7 @@ func cast_spell():
 		var mpos = get_global_mouse_position()
 		var offset_position = position
 		var character_body_offset = $CollisionShape2D.shape.get_rect().size.x / 2
-		var projectile_body_offset =  new_projectile.get_node("CollisionShape2D").shape.get_rect().size.x / 2
+		var projectile_body_offset =  new_projectile.get_node("CollisionShape2D").shape.get_rect().size.x
 		var offset_x = character_body_offset + projectile_body_offset
 		if mpos.x > position.x:
 			offset_position.x += offset_x

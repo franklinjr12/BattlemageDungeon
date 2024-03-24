@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
 height = 26.0
 
-[node name="NPC" type="CharacterBody2D"]
+[node name="NPC" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_obk1u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -11,3 +11,11 @@ func _ready():
 func _process(delta):
 	position += velocity * delta
 
+
+
+func _on_body_entered(body):
+	if body is StaticBody2D:
+		print("collided with floor or wall")
+	elif body is CharacterBody2D:
+		print("collided with character")
+	queue_free()
