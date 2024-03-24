@@ -3,7 +3,7 @@ extends Area2D
 @export var VELOCITY_MAG = 200
 var velocity = Vector2.ZERO
 
-const damage = 10
+const damage = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -4,10 +4,13 @@ extends CharacterBody2D
 @export var PLAYER_JUMP_VALUE = -1000
 @export var PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 
+const INITIAL_HP = 100
+
 var can_jump = true
 var WORLD_GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player_acceleration = Vector2.ZERO
 var jumping = false
+var current_hp = INITIAL_HP
 
 @onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 
