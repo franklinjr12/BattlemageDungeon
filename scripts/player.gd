@@ -11,6 +11,7 @@ var WORLD_GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_grav
 var player_acceleration = Vector2.ZERO
 var jumping = false
 var current_hp = INITIAL_HP
+var current_exp = 0
 
 @onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 
@@ -55,6 +56,7 @@ func cast_spell():
 	var running_scene = get_parent()
 	if running_scene.name == "world":
 		var new_projectile = basic_projectile.instantiate()
+		new_projectile.who_casted = self
 		var mpos = get_global_mouse_position()
 		var offset_position = position
 		var character_body_offset = $CollisionShape2D.shape.get_rect().size.x / 2
@@ -69,3 +71,9 @@ func cast_spell():
 		new_projectile.velocity = dir * new_projectile.VELOCITY_MAG
 		new_projectile.position = offset_position
 		running_scene.add_child(new_projectile)
+
+func gain_experience(experience):
+	current_exp += experience
+
+func suffer_damage(damage):
+	current_hp -= damage

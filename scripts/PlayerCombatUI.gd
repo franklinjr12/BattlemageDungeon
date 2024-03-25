@@ -14,3 +14,5 @@ func _process(delta):
 		if running_scene.name == "world":
 			player = running_scene.get_node("Player")
 	$PlayerHealthDisplay.value = player.current_hp
+	$PlayerExperienceDisplay.value = player.current_exp
+	$ExperienceLabel.text = var_to_str(player.current_exp)
