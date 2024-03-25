@@ -11,7 +11,11 @@ var WORLD_GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_grav
 var player_acceleration = Vector2.ZERO
 var jumping = false
 var current_hp = INITIAL_HP
+const LEVEL_UP_THRESHOLD = 100
 var current_exp = 0
+var current_level = 0
+var next_level = 1
+var level_up_points = 0
 
 @onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 
@@ -72,8 +76,16 @@ func cast_spell():
 		new_projectile.position = offset_position
 		running_scene.add_child(new_projectile)
 
-func gain_experience(experience):
+func gain_experience(experience):	
 	current_exp += experience
+	if current_exp >= next_level * LEVEL_UP_THRESHOLD:
+		next_level += 1
+		current_level += 1
+		level_up_points += 1
+	print("current_exp ", current_exp, " current_level ", current_level, " level_up_points ", level_up_points)
+#	var format_string = "%s was reluctant to learn %s, but now he enjoys it."
+#	var actual_string = format_string % ["Estragon", "GDScript"]
+#	print(actual_string)
 
 func suffer_damage(damage):
 	current_hp -= damage
