@@ -8,7 +8,7 @@
 [node name="world" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fd7xr")]
-position = Vector2(272, 455)
+position = Vector2(529, 453)
 PLAYER_JUMP_VALUE = -2000
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_stxbp")]
@@ -32,7 +32,7 @@ position = Vector2(1067, 305)
 scale = Vector2(1, 10)
 
 [node name="NPC" parent="." instance=ExtResource("3_rqobg")]
-position = Vector2(433, 448)
+position = Vector2(819, 455)
 
 [node name="PlayerCombatUI" parent="." instance=ExtResource("4_82o41")]
 position = Vector2(9, 595)
