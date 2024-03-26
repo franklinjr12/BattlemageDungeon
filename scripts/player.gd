@@ -18,7 +18,7 @@ var next_level = 1
 var level_up_points = 0
 
 @onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
-
+@onready var attack = preload("res://scenes/melee_attack.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$JumpTimer.one_shot = true
