@@ -36,9 +36,3 @@ position = Vector2(819, 455)
 
 [node name="PlayerCombatUI" parent="." instance=ExtResource("4_82o41")]
 position = Vector2(9, 595)
-
-[node name="NPC2" parent="." instance=ExtResource("3_rqobg")]
-position = Vector2(134, 434)
-
-[node name="NPC3" parent="." instance=ExtResource("3_rqobg")]
-position = Vector2(88, 388)

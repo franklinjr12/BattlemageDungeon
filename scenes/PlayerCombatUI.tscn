@@ -18,6 +18,7 @@ texture_progress = ExtResource("2_2rwuc")
 metadata/_edit_lock_ = true
 
 [node name="HealthLabel" type="Label" parent="PlayerHealthDisplay"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 1.0
 offset_right = 104.0
@@ -33,6 +34,7 @@ texture_progress = ExtResource("5_0upi5")
 metadata/_edit_lock_ = true
 
 [node name="ExperienceLabel" type="Label" parent="PlayerExperienceDisplay"]
+layout_mode = 0
 offset_left = 236.0
 offset_top = 2.0
 offset_right = 298.0
