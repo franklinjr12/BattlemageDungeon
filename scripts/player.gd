@@ -4,8 +4,9 @@ extends CharacterBody2D
 @export var PLAYER_JUMP_VALUE = -1000
 @export var PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 
-const INITIAL_HP = 100
+signal player_died
 
+const INITIAL_HP = 100
 var can_jump = true
 var WORLD_GRAVITY : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player_acceleration = Vector2.ZERO
@@ -89,3 +90,5 @@ func gain_experience(experience):
 
 func suffer_damage(damage):
 	current_hp -= damage
+	if current_hp <= 0:
+		print("player died")
