@@ -12,3 +12,4 @@ func _process(delta):
 		var game_over_scene_inst = game_over_scene.instantiate()
 		get_tree().root.add_child(game_over_scene_inst)
 		queue_free()
+
