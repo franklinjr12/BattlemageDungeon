@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
+@onready var SPEED = $CharacterAttributes.speed
 const JUMP_VELOCITY = -400.0
-const drop_experience = 70
+@onready var drop_experience = $CharacterAttributes.drop_experience
 const ATTACK_RANGE = 40
 
 enum NpcState {IDLE, CHASING, ATTACKING}
@@ -20,6 +20,7 @@ var attack_on_cooldown = false
 
 func _ready():
 	$AttackCooldown.wait_time = attack_cooldown
+	$HealthBar.max_value = $CharacterAttributes.health
 
 func _process(delta):
 	if $HealthBar.value <= 0:
@@ -82,6 +83,7 @@ func handle_attacking(delta):
 			$AttackCooldown.start()
 			var running_scene = get_parent()
 			var new_attack = attack.instantiate()
+			new_attack.damage = $CharacterAttributes.damage
 			var npc_shape_offset = $CollisionShape2D.shape.radius
 			var offset_x = 0
 			var attack_shape_offset = new_attack.get_node("CollisionShape2D").shape.radius

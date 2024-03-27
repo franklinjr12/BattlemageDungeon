@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpiobs67oremc"]
+
+[ext_resource type="Script" path="res://scripts/character_attributes.gd" id="1_mt2im"]
+
+[node name="CharacterAttributes" type="Node"]
+script = ExtResource("1_mt2im")

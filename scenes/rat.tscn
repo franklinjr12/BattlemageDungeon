@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://xpbgdxmob05c"]
+
+[ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_mhde8"]
+[ext_resource type="Texture2D" uid="uid://cypr6wfw6fwgy" path="res://assets/rat.png" id="2_33ur8"]
+
+[node name="Rat" instance=ExtResource("1_mhde8")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_33ur8")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(4, 0)
+rotation = 1.5708
+
+[node name="HealthBar" parent="." index="2"]
+offset_left = -13.0
+offset_top = -27.0
+offset_right = 23.0
+offset_bottom = -13.0
+
+[node name="PlayerDetectionShape" parent="PlayerDetectionArea" index="0"]
+visible = false
+position = Vector2(1, -41)
+
+[node name="CharacterAttributes" parent="." index="6"]
+health = 10
+damage = 2
+speed = 200.0
+drop_experience = 5

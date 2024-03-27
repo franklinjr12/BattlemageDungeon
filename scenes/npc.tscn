@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8ddsp1rokso7"]
+[gd_scene load_steps=7 format=3 uid="uid://c8ddsp1rokso7"]
 
 [ext_resource type="Texture2D" uid="uid://ducdnicy2y3g1" path="res://assets/big_demon_run_anim_f3.png" id="1_cy5hd"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_obk1u"]
 [ext_resource type="PackedScene" uid="uid://cxqpy801bl3o5" path="res://scenes/health_bar.tscn" id="2_sgbx8"]
+[ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/character_attributes.tscn" id="4_ntka2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
-height = 26.0
+radius = 8.0
+height = 34.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqdss"]
 size = Vector2(360, 100)
@@ -29,6 +31,7 @@ offset_right = 18.0
 offset_bottom = -16.0
 
 [node name="PlayerDetectionArea" type="Area2D" parent="."]
+visible = false
 visibility_layer = 2
 collision_mask = 2
 metadata/_edit_lock_ = true
@@ -45,6 +48,12 @@ autostart = true
 
 [node name="AttackCooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="CharacterAttributes" parent="." instance=ExtResource("4_ntka2")]
+health = 60
+damage = 10
+speed = 100.0
+drop_experience = 10
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
