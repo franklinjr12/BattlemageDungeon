@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckpg45e3ditm3"]
+[gd_scene load_steps=8 format=3 uid="uid://ckpg45e3ditm3"]
 
 [ext_resource type="PackedScene" uid="uid://cbfl32aq4ax1p" path="res://scenes/player.tscn" id="1_fd7xr"]
 [ext_resource type="Script" path="res://scripts/test_scene.gd" id="1_jycc4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="3_rqobg"]
 [ext_resource type="PackedScene" uid="uid://dliyla2p58k7y" path="res://scenes/PlayerCombatUI.tscn" id="4_82o41"]
 [ext_resource type="PackedScene" uid="uid://dsik45qyc3vf2" path="res://scenes/creatures/bear.tscn" id="6_4k661"]
+[ext_resource type="PackedScene" uid="uid://cppxl628jombq" path="res://assets/tileset/basic_tile_set.tscn" id="7_5808g"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_jycc4")
@@ -45,3 +46,6 @@ position = Vector2(96, 390)
 
 [node name="Bear" parent="." instance=ExtResource("6_4k661")]
 position = Vector2(160, 411)
+
+[node name="basic_tile_set" parent="." instance=ExtResource("7_5808g")]
+layer_0/tile_data = PackedInt32Array(131069, 65536, 0, 131070, 65536, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 65536, 0, 65538, 65536, 0, 1441829, 65536, 0, 1441830, 65536, 0, 1441831, 65536, 0, 1441832, 65536, 0, 1441833, 65536, 0, 1441834, 65536, 0, 1441835, 65536, 0, 1835036, 65536, 0, 1835035, 65536, 0, 1835034, 65536, 0, 1835033, 65536, 0)
