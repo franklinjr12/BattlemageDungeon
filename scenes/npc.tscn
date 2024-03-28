@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/character_attributes.tscn" id="4_ntka2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
-radius = 8.0
-height = 34.0
+radius = 9.0
+height = 36.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqdss"]
 size = Vector2(360, 100)

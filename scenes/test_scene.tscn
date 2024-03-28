@@ -5,10 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cyl4tbv3iftw" path="res://scenes/basic_platform.tscn" id="2_stxbp"]
 [ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="3_rqobg"]
 [ext_resource type="PackedScene" uid="uid://dliyla2p58k7y" path="res://scenes/PlayerCombatUI.tscn" id="4_82o41"]
-[ext_resource type="PackedScene" uid="uid://xpbgdxmob05c" path="res://scenes/rat.tscn" id="6_545tb"]
+[ext_resource type="PackedScene" uid="uid://dsik45qyc3vf2" path="res://scenes/creatures/bear.tscn" id="6_4k661"]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_jycc4")
+
+[node name="PlayerCombatUI" parent="." instance=ExtResource("4_82o41")]
+position = Vector2(9, 595)
 
 [node name="Player" parent="." instance=ExtResource("1_fd7xr")]
 position = Vector2(529, 453)
@@ -37,11 +40,8 @@ scale = Vector2(1, 10)
 [node name="NPC" parent="." instance=ExtResource("3_rqobg")]
 position = Vector2(819, 455)
 
-[node name="PlayerCombatUI" parent="." instance=ExtResource("4_82o41")]
-position = Vector2(9, 595)
-
 [node name="NPC2" parent="." instance=ExtResource("3_rqobg")]
 position = Vector2(96, 390)
 
-[node name="Rat" parent="." instance=ExtResource("6_545tb")]
-position = Vector2(274, 468)
+[node name="Bear" parent="." instance=ExtResource("6_4k661")]
+position = Vector2(160, 411)

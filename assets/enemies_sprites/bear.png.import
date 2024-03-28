@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqaowf6ot43w0"
-path="res://.godot/imported/basic_attack_spell.png-d399f3ee9b6772ce7f9259de170eccae.ctex"
+uid="uid://24xpqfbmeup2"
+path="res://.godot/imported/bear.png-73fc6b1868e5f72a3701ac73fc6f2e6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/basic_attack_spell.png"
-dest_files=["res://.godot/imported/basic_attack_spell.png-d399f3ee9b6772ce7f9259de170eccae.ctex"]
+source_file="res://assets/enemies_sprites/bear.png"
+dest_files=["res://.godot/imported/bear.png-73fc6b1868e5f72a3701ac73fc6f2e6b.ctex"]
 
 [params]
 

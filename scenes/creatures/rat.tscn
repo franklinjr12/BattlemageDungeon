@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://xpbgdxmob05c"]
 
 [ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_mhde8"]
-[ext_resource type="Texture2D" uid="uid://cypr6wfw6fwgy" path="res://assets/rat.png" id="2_33ur8"]
+[ext_resource type="Texture2D" uid="uid://cypr6wfw6fwgy" path="res://assets/enemies_sprites/rat.png" id="2_c7em5"]
 
 [node name="Rat" instance=ExtResource("1_mhde8")]
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_33ur8")
+texture = ExtResource("2_c7em5")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(4, 0)

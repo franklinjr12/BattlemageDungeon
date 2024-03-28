@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0xjrov6y1ucm"]
 
-[ext_resource type="Texture2D" uid="uid://cqaowf6ot43w0" path="res://assets/basic_attack_spell.png" id="1_avyhr"]
 [ext_resource type="Script" path="res://scripts/melee_attack.gd" id="1_u0buw"]
+[ext_resource type="Texture2D" uid="uid://cqaowf6ot43w0" path="res://assets/attacks_sprites/basic_attack_spell.png" id="2_3mxjs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wnwuy"]
 radius = 12.0
@@ -16,7 +16,7 @@ position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_wnwuy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_avyhr")
+texture = ExtResource("2_3mxjs")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
