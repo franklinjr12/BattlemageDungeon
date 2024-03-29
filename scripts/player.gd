@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var player_speed = 100
-@export var PLAYER_JUMP_VALUE = -1000
+@export var PLAYER_JUMP_VALUE = -2000
 @export var PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 
 signal player_died
