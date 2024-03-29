@@ -92,3 +92,4 @@ func suffer_damage(damage):
 	current_hp -= damage
 	if current_hp <= 0:
 		print("player died")
+		player_died.emit()

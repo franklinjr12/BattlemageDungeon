@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dsik45qyc3vf2" path="res://scenes/creatures/bear.tscn" id="6_4k661"]
 [ext_resource type="PackedScene" uid="uid://cppxl628jombq" path="res://assets/tileset/basic_tile_set.tscn" id="7_5808g"]
 
-[node name="world" type="Node2D"]
+[node name="TestScene" type="Node2D"]
 script = ExtResource("1_jycc4")
 
 [node name="Player" parent="." instance=ExtResource("1_fd7xr")]

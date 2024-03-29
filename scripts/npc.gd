@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal enemy_died
 
 @onready var SPEED = $CharacterAttributes.speed
 const JUMP_VELOCITY = -400.0
@@ -25,8 +26,6 @@ func _ready():
 	attack_range = $Sprite2D.texture.get_width()
 
 func _process(delta):
-	if $HealthBar.value <= 0:
-		died()
 	if current_state == NpcState.CHASING:
 		handle_chasing(delta)
 	elif current_state == NpcState.ATTACKING:
@@ -40,6 +39,7 @@ func _physics_process(delta):
 
 func died():
 	give_exp()
+	enemy_died.emit()
 	queue_free()
 
 func give_exp():
@@ -48,6 +48,9 @@ func give_exp():
 
 func suffer_damage(damage):
 	$HealthBar.value -= damage
+	if $HealthBar.value <= 0:
+		died()
+
 
 func _on_player_detection_area_body_entered(body):
 	# since it should detect only the player as it has its on layer no need to cast ?
