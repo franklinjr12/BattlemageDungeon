@@ -11,11 +11,14 @@
 [node name="world" type="Node2D"]
 script = ExtResource("1_jycc4")
 
-[node name="PlayerCombatUI" parent="." instance=ExtResource("4_82o41")]
-position = Vector2(9, 595)
-
 [node name="Player" parent="." instance=ExtResource("1_fd7xr")]
 position = Vector2(529, 453)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.355, 1.355)
+
+[node name="PlayerCombatUI" parent="Player/Camera2D" instance=ExtResource("4_82o41")]
+position = Vector2(-413, 185)
 
 [node name="StaticBody2D" parent="." instance=ExtResource("2_stxbp")]
 position = Vector2(518, 504)

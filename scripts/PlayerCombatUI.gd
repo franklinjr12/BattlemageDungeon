@@ -5,14 +5,10 @@ const MAX_EXPERIENCE = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	player = get_parent().get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player == null:
-		var running_scene = get_parent()
-		if running_scene.name == "world":
-			player = running_scene.get_node("Player")
 	setCurrentHealth(player.current_hp)
 	setCurrentExperience(player.current_exp)
 
