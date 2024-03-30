@@ -19,4 +19,6 @@ shape = SubResource("CapsuleShape2D_u1yuv")
 
 [node name="JumpTimer" type="Timer" parent="."]
 
+[node name="SpellTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

@@ -6,9 +6,6 @@ var damage_number = preload("res://scenes/damage_number.tscn")
 func _ready():
 	pass
 
-func _process(delta):
-	pass
-
 func _on_body_entered(body):
 	if body is CharacterBody2D:
 		body.suffer_damage(damage)

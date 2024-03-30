@@ -8,7 +8,7 @@ func _ready():
 	player = get_parent().get_parent()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	setCurrentHealth(player.current_hp)
 	setCurrentExperience(player.current_exp)
 

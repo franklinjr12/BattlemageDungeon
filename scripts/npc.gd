@@ -63,7 +63,7 @@ func _on_timer_timeout():
 func _on_attack_cooldown_timeout():
 	attack_on_cooldown = false
 
-func handle_chasing(delta):
+func handle_chasing(_delta):
 	var running_scene = get_parent()
 	if running_scene.name == "world":
 		if player_reference == null:
@@ -78,7 +78,7 @@ func handle_chasing(delta):
 			velocity.x -= direction_chasing.normalized().x * SPEED
 			current_state = NpcState.ATTACKING
 
-func handle_attacking(delta):
+func handle_attacking(_delta):
 	if (player_reference.position - position).length() > attack_range:
 		current_state = NpcState.CHASING
 	else:

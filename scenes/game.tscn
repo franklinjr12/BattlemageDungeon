@@ -7,3 +7,5 @@
 script = ExtResource("1_p2bi8")
 
 [node name="TestScene" parent="." instance=ExtResource("2_8wark")]
+
+[editable path="TestScene"]

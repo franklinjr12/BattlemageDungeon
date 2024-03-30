@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo3nmm1jdr4ci"]
+
+[ext_resource type="Script" path="res://scenes/spells/spell_attributes.gd" id="1_id6lu"]
+
+[node name="spell_attributes" type="Node"]
+script = ExtResource("1_id6lu")

@@ -15,9 +15,6 @@ func _ready():
 	print("Have ", enemies_count, " in scene")
 	player_reference.player_died.connect(on_player_died)
 
-func _process(delta):
-	pass
-
 func on_player_died():
 	change_to_game_over()
 

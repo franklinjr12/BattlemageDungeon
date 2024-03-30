@@ -11,9 +11,6 @@ func _ready():
 	
 func set_level_name():
 	$TestScene.name = DEFAULT_LEVEL_NAME
-	
-func _process(delta):
-	pass
 
 func set_player_reference():
 	player_reference = $TestScene/Player
@@ -21,7 +18,8 @@ func set_player_reference():
 func on_level_complete():
 	var current_level = get_node(DEFAULT_LEVEL_NAME)
 	current_level.remove_child(player_reference)
-	current_level.queue_free()
+	current_level.call_deferred("free")
+	#current_level.queue_free()
 	var new_level = create_level()
 	new_level.add_child(player_reference)
 	var player_spawn_position = new_level.get_node("PlayerSpawnArea").position
