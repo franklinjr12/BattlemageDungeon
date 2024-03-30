@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc2bx7t0h5q7m"]
+
+[ext_resource type="Script" path="res://scripts/spell.gd" id="1_dhecg"]
+[ext_resource type="Texture2D" uid="uid://bd15w3v017p2f" path="res://assets/attacks_sprites/arrow_spell.png" id="2_ulaec"]
+[ext_resource type="PackedScene" uid="uid://bo3nmm1jdr4ci" path="res://scenes/spells/spell_attributes.tscn" id="3_06jim"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt7dc"]
+radius = 1.19284
+height = 10.338
+
+[node name="Arrow" type="Area2D"]
+script = ExtResource("1_dhecg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ulaec")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2.515, 2.515)
+shape = SubResource("CapsuleShape2D_nt7dc")
+metadata/_edit_lock_ = true
+
+[node name="SpellAttributes" parent="." instance=ExtResource("3_06jim")]
+damage = 10
+speed = 250.0
+cooldown = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

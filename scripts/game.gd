@@ -25,7 +25,7 @@ func on_level_complete():
 	var player_spawn_position = new_level.get_node("PlayerSpawnArea").position
 	player_reference.position = player_spawn_position
 	new_level.name = DEFAULT_LEVEL_NAME
-	add_child(new_level)
+	call_deferred("add_child", new_level)
 
 func create_level() -> Node2D:
 	return load("res://scenes/levels/level_variant_1.tscn").instantiate()

@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 signal player_died
 
-const PLAYER_JUMP_TIMEOUT_SECONDS = 1
+const PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 const INITIAL_HP = 100
 const LEVEL_UP_THRESHOLD = 100
 var spell_changed = false
@@ -19,6 +19,7 @@ var current_exp = 0
 var current_level = 0
 var next_level = 1
 var level_up_points = 0
+var is_spell_on_cooldown = false
 
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
@@ -27,18 +28,21 @@ var spell = preload("res://scenes/spells/spell.tscn")
 var spell_1 = null
 var fireball = preload("res://scenes/spells/fireball.tscn")
 var spell_2 = null
+var arrow = preload("res://scenes/spells/arrow.tscn")
+var spell_3 = null
+var bolt = preload("res://scenes/spells/bolt.tscn")
+var spell_4 = null
 var selected_spell = null
+var current_spell_timer = null
 
 func _ready():
-	spell_1 = spell.instantiate()
-	add_child(spell_1)
-	spell_2 = fireball.instantiate()
-	add_child(spell_2)
-	selected_spell = get_node("Spell")
+	spell_1 = spell
+	spell_2 = fireball
+	spell_3 = arrow
+	spell_4 = bolt
+	selected_spell = spell_1
 	$JumpTimer.one_shot = true
 	$JumpTimer.wait_time = PLAYER_JUMP_TIMEOUT_SECONDS
-	$SpellTimer.one_shot = true
-	$SpellTimer.wait_time = selected_spell.cooldown
 
 func _process(_delta):
 	check_inputs()
@@ -47,11 +51,13 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += WORLD_GRAVITY * delta
+	else:
+		can_jump = true
 	if Input.is_action_just_pressed("player_jump"):
 		if can_jump:
 			can_jump = false
 			jumping = true
-			$JumpTimer.start()	
+			$JumpTimer.start()
 	if Input.is_action_just_released("player_jump"):
 		jumping = false
 	if Input.is_action_pressed("player_move_right"):
@@ -70,31 +76,33 @@ func check_inputs():
 	if Input.is_action_just_pressed("cast"):
 		cast_spell()
 	if Input.is_action_just_pressed("select_spell_1"):
-		#selected_spell = spell_1
-		selected_spell = get_node("Spell")
+		selected_spell = spell_1
 		spell_changed = true
 	if Input.is_action_just_pressed("select_spell_2"):
-		#selected_spell = spell_2
-		selected_spell = get_node("Fireball")
+		selected_spell = spell_2
+		spell_changed = true
+	if Input.is_action_just_pressed("select_spell_3"):
+		selected_spell = spell_3
+		spell_changed = true
+	if Input.is_action_just_pressed("select_spell_4"):
+		selected_spell = spell_4
 		spell_changed = true
 
 func _on_jump_timer_timeout():
-	can_jump = true
 	jumping = false
 
 func cast_spell():
 	# if isnt on cooldown
-	if spell_on_cooldown():
+	if is_spell_on_cooldown:
 		return
 	# if we are in the a valid game scene
 	var running_scene = get_parent()
 	if running_scene.name == "world":
-		var new_projectile = selected_spell.duplicate()
+		var new_projectile = selected_spell.instantiate()
 		new_projectile.who_casted = self
 		var mpos = get_global_mouse_position()
 		var offset_position = position
 		var character_body_offset = $CollisionShape2D.shape.get_rect().size.x / 2
-		var projectile_shape =  new_projectile.get_node("CollisionShape2D").shape
 		var projectile_body_offset = new_projectile.get_size() * spell_offset_value
 		var offset_x = character_body_offset + projectile_body_offset
 		if mpos.x > position.x:
@@ -106,7 +114,9 @@ func cast_spell():
 		new_projectile.set_direction(dir)
 		new_projectile.position = offset_position
 		running_scene.add_child(new_projectile)
+		$SpellTimer.wait_time = new_projectile.cooldown
 		$SpellTimer.start()
+		is_spell_on_cooldown = true
 
 func gain_experience(experience):
 	current_exp += experience
@@ -125,9 +135,5 @@ func suffer_damage(damage):
 		print("player died")
 		player_died.emit()
 
-func spell_on_cooldown():
-	if spell_changed:
-		spell_changed = false
-		$SpellTimer.wait_time = selected_spell.cooldown
-	return $SpellTimer.time_left > 0
-
+func _on_spell_timer_timeout():
+	is_spell_on_cooldown = false

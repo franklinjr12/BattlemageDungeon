@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://byvlnxbr1jq87"]
+
+[ext_resource type="Script" path="res://scripts/spell.gd" id="1_ao5u7"]
+[ext_resource type="Texture2D" uid="uid://dksq4l76xstjh" path="res://assets/attacks_sprites/bolt_spell.png" id="2_feoxb"]
+[ext_resource type="PackedScene" uid="uid://bo3nmm1jdr4ci" path="res://scenes/spells/spell_attributes.tscn" id="3_l55v0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt7dc"]
+radius = 1.19284
+height = 3.97614
+
+[node name="Bolt" type="Area2D"]
+script = ExtResource("1_ao5u7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_feoxb")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2.515, 2.515)
+shape = SubResource("CapsuleShape2D_nt7dc")
+metadata/_edit_lock_ = true
+
+[node name="SpellAttributes" parent="." instance=ExtResource("3_l55v0")]
+damage = 10
+speed = 400.0
+cooldown = 0.3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

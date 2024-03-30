@@ -9,16 +9,12 @@ var damage_number = preload("res://scenes/damage_number.tscn")
 var direction = Vector2.ZERO
 var who_casted = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	print("spell ready cooldown ", cooldown)
-
 func _process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
 	if body is StaticBody2D:
-		print("collided with floor or wall")
+		print("spell do animation")
 	elif body is CharacterBody2D:
 		body.suffer_damage(damage)
 		var new_damage_number = damage_number.instantiate()
@@ -30,7 +26,7 @@ func _on_body_entered(body):
 func set_direction(dir):
 	direction = dir
 	# rotate the sprite
-	$Sprite2D.rotate(atan2(dir.y,dir.x))
+	rotate(atan2(dir.y,dir.x))
 
 func get_size() -> float:
 	var shape = $CollisionShape2D.shape
@@ -38,4 +34,10 @@ func get_size() -> float:
 		return shape.size.x
 	elif shape is CircleShape2D:
 		return shape.radius * 2
+	elif shape is CapsuleShape2D:
+		# in some the capsule is rotated, so the actual x size is on height
+		if $CollisionShape2D.rotation != 0:
+			return shape.height
+		else:
+			return shape.radius
 	return 1
