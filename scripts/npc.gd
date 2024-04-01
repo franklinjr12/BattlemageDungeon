@@ -23,10 +23,12 @@ func _ready():
 	$AttackCooldown.wait_time = attack_cooldown
 	$HealthBar.max_value = $CharacterAttributes.health
 	$HealthBar.value = $HealthBar.max_value
-	attack_range = $Sprite2D.texture.get_width()
+	attack_range = get_x_size()
 
 func _process(delta):
-	if current_state == NpcState.CHASING:
+	if current_state == NpcState.IDLE:
+		pass
+	elif current_state == NpcState.CHASING:
 		handle_chasing(delta)
 	elif current_state == NpcState.ATTACKING:
 		handle_attacking(delta)
@@ -56,6 +58,7 @@ func _on_player_detection_area_body_entered(body):
 	# since it should detect only the player as it has its on layer no need to cast ?
 	if body is CharacterBody2D:
 		current_state = NpcState.CHASING
+		print("changing state to chasing on body entered")
 
 func _on_timer_timeout():
 	can_attack = true
@@ -77,10 +80,12 @@ func handle_chasing(_delta):
 		if (player_reference.position - position).length() < attack_range:
 			velocity.x -= direction_chasing.normalized().x * SPEED
 			current_state = NpcState.ATTACKING
+			print("changing state to attacking")
 
 func handle_attacking(_delta):
 	if (player_reference.position - position).length() > attack_range:
 		current_state = NpcState.CHASING
+		print("changing state to chasing")
 	else:
 		if can_attack and !attack_on_cooldown:
 			attack_on_cooldown = true
@@ -105,3 +110,17 @@ func handle_attacking(_delta):
 			v.x += offset_x
 			new_attack.position = v
 			running_scene.add_child(new_attack)
+
+func get_x_size() -> float:
+	var shape = $CollisionShape2D.shape
+	if shape is RectangleShape2D:
+		return shape.size.x
+	elif shape is CircleShape2D:
+		return shape.radius * 2
+	elif shape is CapsuleShape2D:
+		# in some the capsule is rotated, so the actual x size is on height
+		if $CollisionShape2D.rotation != 0:
+			return shape.height
+		else:
+			return shape.radius
+	return 1

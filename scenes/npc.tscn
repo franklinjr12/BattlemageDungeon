@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8ddsp1rokso7"]
 
-[ext_resource type="Texture2D" uid="uid://ducdnicy2y3g1" path="res://assets/big_demon_run_anim_f3.png" id="1_cy5hd"]
+[ext_resource type="Texture2D" uid="uid://ducdnicy2y3g1" path="res://assets/enemies_sprites/big_demon_run_anim_f3.png" id="1_cy5hd"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_obk1u"]
 [ext_resource type="PackedScene" uid="uid://cxqpy801bl3o5" path="res://scenes/health_bar.tscn" id="2_sgbx8"]
 [ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/character_attributes.tscn" id="4_ntka2"]

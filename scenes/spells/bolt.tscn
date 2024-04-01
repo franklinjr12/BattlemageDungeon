@@ -22,7 +22,7 @@ shape = SubResource("CapsuleShape2D_nt7dc")
 metadata/_edit_lock_ = true
 
 [node name="SpellAttributes" parent="." instance=ExtResource("3_l55v0")]
-damage = 10
+damage = 50
 speed = 400.0
 cooldown = 0.3
 

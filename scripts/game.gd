@@ -21,9 +21,10 @@ func on_level_complete():
 	current_level.call_deferred("free")
 	#current_level.queue_free()
 	var new_level = create_level()
-	new_level.add_child(player_reference)
 	var player_spawn_position = new_level.get_node("PlayerSpawnArea").position
 	player_reference.position = player_spawn_position
+	print("adding player")
+	new_level.add_child(player_reference)
 	new_level.name = DEFAULT_LEVEL_NAME
 	call_deferred("add_child", new_level)
 

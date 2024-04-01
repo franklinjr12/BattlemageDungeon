@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://csqwoqusu1q0q"]
+
+[ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_wvvfm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2b042"]
+size = Vector2(6.61417, 8.18898)
+
+[node name="Creature1" instance=ExtResource("1_wvvfm")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 0.999999)
+scale = Vector2(3.175, 3.175)
+shape = SubResource("RectangleShape2D_2b042")
+
+[node name="HealthBar" parent="." index="2"]
+offset_top = -57.0
+offset_bottom = -43.0
+
+[node name="CharacterAttributes" parent="." index="6"]
+health = 50
+damage = 15
+speed = 50.0

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ducdnicy2y3g1"
-path="res://.godot/imported/big_demon_run_anim_f3.png-d50d02ac31b56b9a76815a4729b1c683.ctex"
+path="res://.godot/imported/big_demon_run_anim_f3.png-9644dfa0fa235c1424fcfa6641528b65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/big_demon_run_anim_f3.png"
-dest_files=["res://.godot/imported/big_demon_run_anim_f3.png-d50d02ac31b56b9a76815a4729b1c683.ctex"]
+source_file="res://assets/enemies_sprites/big_demon_run_anim_f3.png"
+dest_files=["res://.godot/imported/big_demon_run_anim_f3.png-9644dfa0fa235c1424fcfa6641528b65.ctex"]
 
 [params]
 
