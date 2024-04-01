@@ -57,7 +57,7 @@ func suffer_damage(damage):
 func _on_player_detection_area_body_entered(body):
 	# since it should detect only the player as it has its on layer no need to cast ?
 	if body is CharacterBody2D:
-		current_state = NpcState.CHASING
+		change_state(NpcState.CHASING)
 		print("changing state to chasing on body entered")
 
 func _on_timer_timeout():
@@ -77,14 +77,15 @@ func handle_chasing(_delta):
 		else:
 			$Sprite2D.flip_h = false
 		velocity.x = direction_chasing.normalized().x * SPEED
-		if (player_reference.position - position).length() < attack_range:
+		print("dist ", (player_reference.position - position).length(), " range ", attack_range)
+		if (player_reference.position - position).length() <= attack_range:
 			velocity.x -= direction_chasing.normalized().x * SPEED
-			current_state = NpcState.ATTACKING
+			change_state(NpcState.ATTACKING)
 			print("changing state to attacking")
 
 func handle_attacking(_delta):
 	if (player_reference.position - position).length() > attack_range:
-		current_state = NpcState.CHASING
+		change_state(NpcState.CHASING)
 		print("changing state to chasing")
 	else:
 		if can_attack and !attack_on_cooldown:
@@ -114,7 +115,7 @@ func handle_attacking(_delta):
 func get_x_size() -> float:
 	var shape = $CollisionShape2D.shape
 	if shape is RectangleShape2D:
-		return shape.size.x
+		return shape.size.x * 3
 	elif shape is CircleShape2D:
 		return shape.radius * 2
 	elif shape is CapsuleShape2D:
@@ -124,3 +125,6 @@ func get_x_size() -> float:
 		else:
 			return shape.radius
 	return 1
+
+func change_state(state : NpcState):
+	current_state = state

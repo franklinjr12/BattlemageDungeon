@@ -3,6 +3,7 @@ extends Node
 const DEFAULT_LEVEL_NAME = "world"
 
 var player_reference = null
+var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
 
 func _ready():
 	set_player_reference()
@@ -26,6 +27,7 @@ func on_level_complete():
 	print("adding player")
 	new_level.add_child(player_reference)
 	new_level.name = DEFAULT_LEVEL_NAME
+	new_level.set_script(scene_combat_script)
 	call_deferred("add_child", new_level)
 
 func create_level() -> Node2D:

@@ -9,3 +9,15 @@ layer_0/tile_data = PackedInt32Array(2621439, 131072, 1, 2555903, 131072, 1, 249
 
 [node name="PlayerSpawnArea" type="Area2D" parent="."]
 position = Vector2(49, 615)
+
+[node name="EnemySpawnArea1" type="Area2D" parent="." groups=["enemy_spawn"]]
+position = Vector2(247, 474)
+
+[node name="EnemySpawnArea2" type="Area2D" parent="." groups=["enemy_spawn"]]
+position = Vector2(1024, 556)
+
+[node name="EnemySpawnArea3" type="Area2D" parent="." groups=["enemy_spawn"]]
+position = Vector2(651, 627)
+
+[node name="EnemySpawnArea4" type="Area2D" parent="." groups=["enemy_spawn"]]
+position = Vector2(669, 282)
