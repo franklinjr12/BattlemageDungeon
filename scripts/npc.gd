@@ -77,7 +77,6 @@ func handle_chasing(_delta):
 		else:
 			$Sprite2D.flip_h = false
 		velocity.x = direction_chasing.normalized().x * SPEED
-		print("dist ", (player_reference.position - position).length(), " range ", attack_range)
 		if (player_reference.position - position).length() <= attack_range:
 			velocity.x -= direction_chasing.normalized().x * SPEED
 			change_state(NpcState.ATTACKING)

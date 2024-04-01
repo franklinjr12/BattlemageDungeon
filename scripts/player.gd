@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var player_speed = 100
+@export var player_speed = 300
 @export var PLAYER_JUMP_VALUE = -2000
 @export var spell_offset_value : float = 1.5
 
