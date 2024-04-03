@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbfl32aq4ax1p"]
+[gd_scene load_steps=6 format=3 uid="uid://cbfl32aq4ax1p"]
 
 [ext_resource type="Texture2D" uid="uid://bl38w8qnsowyq" path="res://assets/small_character.png" id="1_cdag2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nypau"]
-[ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/character_attributes.tscn" id="3_1ye1h"]
+[ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/attributes/character_attributes.tscn" id="3_1ye1h"]
+[ext_resource type="PackedScene" uid="uid://d4e0ysfmhbvcm" path="res://scenes/attributes/character_magical_attributes.tscn" id="4_fa3dn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1yuv"]
 
@@ -33,6 +34,12 @@ character_type = 1
 health = 100
 damage = 1
 speed = 100.0
+
+[node name="CharacterMagicalAttributes" parent="." instance=ExtResource("4_fa3dn")]
+dark = 1
+light = 2
+nature = 3
+arcane = 4
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]

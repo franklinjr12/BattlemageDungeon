@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var player_speed = 300
 @export var PLAYER_JUMP_VALUE = -2000
 @export var spell_offset_value : float = 1.5
@@ -18,7 +20,7 @@ var current_hp = INITIAL_HP
 var current_exp = 0
 var current_level = 0
 var next_level = 1
-var level_up_points = 0
+var level_up_points = 5
 var is_spell_on_cooldown = false
 
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")

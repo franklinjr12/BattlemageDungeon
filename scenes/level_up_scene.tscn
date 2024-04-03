@@ -12,32 +12,187 @@ position = Vector2(577.222, 325)
 scale = Vector2(0.897222, 0.897222)
 texture = ExtResource("1_v7opn")
 
-[node name="LevelUpButton" type="TextureButton" parent="."]
-offset_left = 379.0
-offset_top = 562.0
-offset_right = 519.0
-offset_bottom = 623.0
+[node name="MainSceneOptions" type="HBoxContainer" parent="."]
+offset_top = 552.0
+offset_right = 1152.0
+offset_bottom = 613.0
+alignment = 1
+
+[node name="LevelUpButton" type="TextureButton" parent="MainSceneOptions"]
+layout_mode = 2
 texture_normal = ExtResource("2_iufj0")
 
-[node name="Label" type="Label" parent="LevelUpButton"]
+[node name="Label" type="Label" parent="MainSceneOptions/LevelUpButton"]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 18.0
 offset_right = 107.0
 offset_bottom = 44.0
 text = "LEVEL UP"
+metadata/_edit_lock_ = true
 
-[node name="NextLevelButton" type="TextureButton" parent="."]
-offset_left = 579.0
-offset_top = 561.0
-offset_right = 719.0
-offset_bottom = 622.0
+[node name="PrepareSpellsButton" type="TextureButton" parent="MainSceneOptions"]
+layout_mode = 2
 texture_normal = ExtResource("2_iufj0")
 
-[node name="Label" type="Label" parent="NextLevelButton"]
+[node name="Label" type="Label" parent="MainSceneOptions/PrepareSpellsButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 44.0
+text = "SPELLS"
+metadata/_edit_lock_ = true
+
+[node name="NextLevelButton" type="TextureButton" parent="MainSceneOptions"]
+layout_mode = 2
+texture_normal = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="MainSceneOptions/NextLevelButton"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 17.0
 offset_right = 118.0
 offset_bottom = 43.0
 text = "NEXT LEVEL"
+metadata/_edit_lock_ = true
+
+[node name="CharacterAttributesOptions" type="HBoxContainer" parent="."]
+visible = false
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 384.0
+offset_bottom = 512.0
+alignment = 1
+
+[node name="Names" type="VBoxContainer" parent="CharacterAttributesOptions"]
+layout_mode = 2
+
+[node name="LightButton" type="TextureButton" parent="CharacterAttributesOptions/Names"]
+layout_mode = 2
+texture_normal = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Names/LightButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 44.0
+text = "LIGHT
+"
+metadata/_edit_lock_ = true
+
+[node name="DarkButton" type="TextureButton" parent="CharacterAttributesOptions/Names"]
+layout_mode = 2
+texture_normal = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Names/DarkButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 44.0
+text = "DARK"
+metadata/_edit_lock_ = true
+
+[node name="NatureButton" type="TextureButton" parent="CharacterAttributesOptions/Names"]
+layout_mode = 2
+texture_normal = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Names/NatureButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 44.0
+text = "NATURE
+"
+metadata/_edit_lock_ = true
+
+[node name="ArcaneButton" type="TextureButton" parent="CharacterAttributesOptions/Names"]
+layout_mode = 2
+texture_normal = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Names/ArcaneButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 18.0
+offset_right = 107.0
+offset_bottom = 44.0
+text = "ARCANE
+"
+metadata/_edit_lock_ = true
+
+[node name="Values" type="VBoxContainer" parent="CharacterAttributesOptions"]
+layout_mode = 2
+
+[node name="LightPointsDisplay" type="TextureRect" parent="CharacterAttributesOptions/Values"]
+layout_mode = 2
+texture = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Values/LightPointsDisplay"]
+layout_mode = 2
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 42.0
+text = "0"
+
+[node name="DarkPointsDisplay" type="TextureRect" parent="CharacterAttributesOptions/Values"]
+layout_mode = 2
+texture = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Values/DarkPointsDisplay"]
+layout_mode = 2
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 42.0
+text = "0"
+
+[node name="NaturePointsDisplay" type="TextureRect" parent="CharacterAttributesOptions/Values"]
+layout_mode = 2
+texture = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Values/NaturePointsDisplay"]
+layout_mode = 2
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 42.0
+text = "0"
+
+[node name="ArcanePointsDisplay" type="TextureRect" parent="CharacterAttributesOptions/Values"]
+layout_mode = 2
+texture = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterAttributesOptions/Values/ArcanePointsDisplay"]
+layout_mode = 2
+offset_left = 56.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 42.0
+text = "0"
+
+[node name="CharacterPointsDisplay" type="TextureRect" parent="."]
+visible = false
+offset_left = 160.0
+offset_top = 336.0
+offset_right = 300.0
+offset_bottom = 397.0
+texture = ExtResource("2_iufj0")
+
+[node name="Label" type="Label" parent="CharacterPointsDisplay"]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 116.0
+offset_bottom = 42.0
+text = "Points left 0"
+
+[connection signal="pressed" from="MainSceneOptions/LevelUpButton" to="." method="_on_level_up_button_pressed"]
+[connection signal="pressed" from="MainSceneOptions/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="CharacterAttributesOptions/Names/LightButton" to="." method="_on_light_button_pressed"]
+[connection signal="pressed" from="CharacterAttributesOptions/Names/DarkButton" to="." method="_on_dark_button_pressed"]
+[connection signal="pressed" from="CharacterAttributesOptions/Names/NatureButton" to="." method="_on_nature_button_pressed"]
+[connection signal="pressed" from="CharacterAttributesOptions/Names/ArcaneButton" to="." method="_on_arcane_button_pressed"]

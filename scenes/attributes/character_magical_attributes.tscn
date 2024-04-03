@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4e0ysfmhbvcm"]
+
+[ext_resource type="Script" path="res://scripts/character_magical_attributes.gd" id="1_7q5a4"]
+
+[node name="CharacterMagicalAttributes" type="Node"]
+script = ExtResource("1_7q5a4")
