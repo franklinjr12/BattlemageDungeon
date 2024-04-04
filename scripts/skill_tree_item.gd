@@ -1,18 +1,21 @@
-extends Node2D
+extends Node
 
-@export var active = false
+@export var activated : bool = false
+@export var light_attribute_required : int = 0 
+@export var dark_attribute_required : int = 0 
+@export var nature_attribute_required : int = 0 
+@export var arcane_attribute_required : int = 0 
+var player_reference : Player = null
 
 func _ready():
-	var children = get_children()
-	for c in children:
-		if not(c is TextureRect):
-			var line = Line2D.new()
-			line.width = 2
-			add_child(line)
-#			line.add_point(global_position)
-#			line.add_point(c.global_position)
-			line.add_point(position - $TextureRect.size / 2)
-			line.add_point(c.position + c.get_node("TextureRect").size / 2)
-			line.default_color = Color(0.5,0.5,0.5,1) #gray
-			if c.active:
-				line.default_color = Color(1,1,1,1) #white
+	player_reference = get_parent().player_reference
+
+func _process(_delta):
+	if player_reference == null:
+		player_reference = get_parent().player_reference
+	if !activated and player_reference:
+		var attributes : CharacterMagicalAttributes = player_reference.get_node("CharacterMagicalAttributes")
+		if light_attribute_required <= attributes.light and dark_attribute_required <= attributes.dark and nature_attribute_required <= attributes.nature and arcane_attribute_required <= attributes.arcane:
+			activated = true
+	if activated:
+		$ColorRect.visible = false

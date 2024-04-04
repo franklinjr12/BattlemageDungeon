@@ -11,18 +11,19 @@ func _ready():
 	player_reference.visible = false
 	player_reference.process_mode = Node.PROCESS_MODE_DISABLED
 	player_reference.get_node("Camera2D").enabled = false
+	set_attributes_labels()
+	$SkillTree.player_reference = player_reference
+
+func _process(_delta):
+	set_attributes_labels()
+
+func set_attributes_labels():
 	$CharacterAttributesOptions/Values/DarkPointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").dark)
 	$CharacterAttributesOptions/Values/LightPointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").light)
 	$CharacterAttributesOptions/Values/NaturePointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").nature)
 	$CharacterAttributesOptions/Values/ArcanePointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").arcane)
 	$CharacterPointsDisplay/Label.text = "Points left " + var_to_str(player_reference.level_up_points)
 
-func _process(_delta):
-	$CharacterAttributesOptions/Values/DarkPointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").dark)
-	$CharacterAttributesOptions/Values/LightPointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").light)
-	$CharacterAttributesOptions/Values/NaturePointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").nature)
-	$CharacterAttributesOptions/Values/ArcanePointsDisplay/Label.text = var_to_str(player_reference.get_node("CharacterMagicalAttributes").arcane)
-	$CharacterPointsDisplay/Label.text = "Points left " + var_to_str(player_reference.level_up_points)
 
 func _on_level_up_button_pressed():
 	$CharacterAttributesOptions.visible = !$CharacterAttributesOptions.visible

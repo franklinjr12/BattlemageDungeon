@@ -36,10 +36,6 @@ damage = 1
 speed = 100.0
 
 [node name="CharacterMagicalAttributes" parent="." instance=ExtResource("4_fa3dn")]
-dark = 1
-light = 2
-nature = 3
-arcane = 4
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]
