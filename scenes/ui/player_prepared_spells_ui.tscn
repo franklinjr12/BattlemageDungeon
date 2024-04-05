@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c38tkceppw1rq"]
+
+[ext_resource type="Script" path="res://scripts/ui/player_prepared_spells_ui.gd" id="1_7uxmq"]
+[ext_resource type="Texture2D" uid="uid://dspca7yrq14uc" path="res://assets/level_up_scene/skill_tree_item_place_holder.png" id="2_4lvy6"]
+
+[node name="PlayerPreparedSpellsUI" type="Node2D"]
+script = ExtResource("1_7uxmq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot1" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_4lvy6")
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Slot1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.419608)
+
+[node name="Slot2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_4lvy6")
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Slot2"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.419608)
+
+[node name="Slot3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_4lvy6")
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Slot3"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.419608)
+
+[node name="Slot4" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_4lvy6")
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Slot4"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.419608)

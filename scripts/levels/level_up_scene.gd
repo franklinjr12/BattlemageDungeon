@@ -58,3 +58,8 @@ func _on_arcane_button_pressed():
 	if player_reference.level_up_points > 0:
 		player_reference.level_up_points -= 1
 		player_reference.get_node("CharacterMagicalAttributes").arcane += 1
+
+
+func _on_prepare_spells_button_pressed():
+	$SkillTree.visible = !$SkillTree.visible
+	$PlayerPreparedSpellsUI.visible = !$PlayerPreparedSpellsUI.visible
