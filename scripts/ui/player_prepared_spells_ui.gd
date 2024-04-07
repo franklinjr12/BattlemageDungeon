@@ -42,3 +42,10 @@ func check_inputs():
 		select_spell(3)
 	if Input.is_action_just_pressed("select_spell_4"):
 		select_spell(4)
+
+func assign_new_spell_to_slot(spell : Spell, slot : int):
+	var img = spell.get_node("Sprite2D").texture.get_image().duplicate()
+	img.resize(slots_size.x, slots_size.y)
+	var tex = ImageTexture.create_from_image(img)
+	$HBoxContainer/Slot1.texture = tex
+

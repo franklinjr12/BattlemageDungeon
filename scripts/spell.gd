@@ -1,5 +1,6 @@
 extends Area2D
 
+class_name Spell
 
 var damage_number = preload("res://scenes/damage_number.tscn")
 

@@ -11,6 +11,7 @@ func _ready():
 	player_reference.visible = false
 	player_reference.process_mode = Node.PROCESS_MODE_DISABLED
 	player_reference.get_node("Camera2D").enabled = false
+	player_reference.recover_health()
 	set_attributes_labels()
 	$SkillTree.player_reference = player_reference
 

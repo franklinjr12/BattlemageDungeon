@@ -139,3 +139,6 @@ func suffer_damage(damage):
 
 func _on_spell_timer_timeout():
 	is_spell_on_cooldown = false
+
+func recover_health():
+	current_hp = INITIAL_HP
