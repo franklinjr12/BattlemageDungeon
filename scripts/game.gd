@@ -8,6 +8,11 @@ var player_reference = null
 var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
 var completed_levels = 0
 
+var spell = preload("res://scenes/spells/spell.tscn")
+var fireball = preload("res://scenes/spells/fireball.tscn")
+var arrow = preload("res://scenes/spells/arrow.tscn")
+var bolt = preload("res://scenes/spells/bolt.tscn")
+
 func _ready():
 	set_player_reference()
 	set_level_name()
@@ -54,3 +59,21 @@ func connect_to_level_complete(level_name : String):
 
 func create_levelup() -> Node2D:
 	return load("res://scenes/level_up_scene.tscn").instantiate()
+
+func assign_random_spell_to_player():
+	# test assigning spells
+	var spells = [spell, fireball, arrow, bolt]
+	var ps = player_reference.get_node("Camera2D/PlayerCombatUI").get_node("PlayerPreparedSpellsUI")
+	var s = null
+	s = spells[randi_range(0,3)]
+	player_reference.spell_1 = s
+	ps.assign_new_spell_to_slot(s.instantiate(), 1)
+	s = spells[randi_range(0,3)]
+	player_reference.spell_2 = s
+	ps.assign_new_spell_to_slot(s.instantiate(), 2)
+	s = spells[randi_range(0,3)]
+	player_reference.spell_3 = s
+	ps.assign_new_spell_to_slot(s.instantiate(), 3)
+	s = spells[randi_range(0,3)]
+	player_reference.spell_4 = s
+	ps.assign_new_spell_to_slot(s.instantiate(), 4)

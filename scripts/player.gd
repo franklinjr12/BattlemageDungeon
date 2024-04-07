@@ -99,7 +99,7 @@ func cast_spell():
 		return
 	# if we are in the a valid game scene
 	var running_scene = get_parent()
-	if running_scene.name == "world":
+	if running_scene.name == "world" and selected_spell != null:
 		var new_projectile = selected_spell.instantiate()
 		new_projectile.who_casted = self
 		var mpos = get_global_mouse_position()

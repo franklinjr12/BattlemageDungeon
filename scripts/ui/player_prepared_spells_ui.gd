@@ -47,5 +47,5 @@ func assign_new_spell_to_slot(spell : Spell, slot : int):
 	var img = spell.get_node("Sprite2D").texture.get_image().duplicate()
 	img.resize(slots_size.x, slots_size.y)
 	var tex = ImageTexture.create_from_image(img)
-	$HBoxContainer/Slot1.texture = tex
+	get_node("HBoxContainer/Slot"+var_to_str(slot)).texture = tex
 
