@@ -8,11 +8,6 @@ var player_reference = null
 var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
 var completed_levels = 0
 
-var spell = preload("res://scenes/spells/spell.tscn")
-var fireball = preload("res://scenes/spells/fireball.tscn")
-var arrow = preload("res://scenes/spells/arrow.tscn")
-var bolt = preload("res://scenes/spells/bolt.tscn")
-
 func _ready():
 	set_player_reference()
 	set_level_name()
@@ -48,11 +43,12 @@ func on_level_complete():
 
 func create_level() -> Node2D:
 	# select one of the levels randomly
-	var level_index = var_to_str(randi_range(1,2))
-	var format_string = "res://scenes/levels/level_variant_%s.tscn"
-	var actual_string = format_string % [level_index]
-	print("chosen level ", actual_string)
-	return load(actual_string).instantiate()
+#	var level_index = var_to_str(randi_range(1,2))
+#	var format_string = "res://scenes/levels/level_variant_%s.tscn"
+#	var actual_string = format_string % [level_index]
+#	print("chosen level ", actual_string)
+#	return load(actual_string).instantiate()
+	return load("res://scenes/levels/level_variant_0.tscn").instantiate()
 
 func connect_to_level_complete(level_name : String):
 	get_node(level_name).level_complete.connect(on_level_complete)
@@ -62,6 +58,10 @@ func create_levelup() -> Node2D:
 
 func assign_random_spell_to_player():
 	# test assigning spells
+	var spell = load("res://scenes/spells/spell.tscn")
+	var fireball = load("res://scenes/spells/fireball.tscn")
+	var arrow = load("res://scenes/spells/arrow.tscn")
+	var bolt = load("res://scenes/spells/bolt.tscn")
 	var spells = [spell, fireball, arrow, bolt]
 	var ps = player_reference.get_node("Camera2D/PlayerCombatUI").get_node("PlayerPreparedSpellsUI")
 	var s = null

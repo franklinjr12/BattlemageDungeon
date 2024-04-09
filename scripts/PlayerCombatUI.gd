@@ -2,6 +2,7 @@ extends Node2D
 
 var player = null
 const MAX_EXPERIENCE = 100
+const player_prepared_spells_position = Vector2(281, -57)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

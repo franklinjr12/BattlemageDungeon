@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1vl3j8o6suu7"]
+[gd_scene load_steps=8 format=3 uid="uid://b1vl3j8o6suu7"]
 
 [ext_resource type="Script" path="res://scripts/skill_tree.gd" id="1_02mej"]
 [ext_resource type="PackedScene" uid="uid://bcl3hcng1wdim" path="res://scenes/skill_tree_item.tscn" id="1_v7ow3"]
 [ext_resource type="Texture2D" uid="uid://bysdku2cb12fg" path="res://assets/attacks_sprites/basic_spell_20x20.png" id="2_i77t4"]
+[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="3_dpuor"]
+[ext_resource type="PackedScene" uid="uid://c7ws2dxw0l3xf" path="res://scenes/spells/fireball.tscn" id="5_s6b1e"]
+[ext_resource type="PackedScene" uid="uid://bc2bx7t0h5q7m" path="res://scenes/spells/arrow.tscn" id="6_oaw6e"]
+[ext_resource type="PackedScene" uid="uid://byvlnxbr1jq87" path="res://scenes/spells/bolt.tscn" id="7_k2pno"]
 
 [node name="SkillTree" type="Node2D"]
 script = ExtResource("1_02mej")
@@ -24,6 +28,7 @@ grow_vertical = 2
 [node name="LightOrb" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(224, 96)
 light_attribute_required = 1
+spell = ExtResource("3_dpuor")
 
 [node name="TextureRect" parent="LightOrb" index="0"]
 texture = ExtResource("2_i77t4")
@@ -32,4 +37,31 @@ texture = ExtResource("2_i77t4")
 position = Vector2(224, 152)
 activated = true
 
+[node name="Fireball" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(224, 200)
+light_attribute_required = 1
+spell = ExtResource("5_s6b1e")
+
+[node name="TextureRect" parent="Fireball" index="0"]
+texture = ExtResource("2_i77t4")
+
+[node name="Arrow" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(176, 152)
+light_attribute_required = 1
+spell = ExtResource("6_oaw6e")
+
+[node name="TextureRect" parent="Arrow" index="0"]
+texture = ExtResource("2_i77t4")
+
+[node name="Bolt" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(280, 152)
+light_attribute_required = 1
+spell = ExtResource("7_k2pno")
+
+[node name="TextureRect" parent="Bolt" index="0"]
+texture = ExtResource("2_i77t4")
+
 [editable path="LightOrb"]
+[editable path="Fireball"]
+[editable path="Arrow"]
+[editable path="Bolt"]

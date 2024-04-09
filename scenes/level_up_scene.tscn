@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6x4a5aptlons"]
+[gd_scene load_steps=5 format=3 uid="uid://b6x4a5aptlons"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_up_scene.gd" id="1_bci3m"]
 [ext_resource type="Texture2D" uid="uid://ctth7kgoo7t0m" path="res://assets/level_up_scene/level_up_scene_background.png" id="1_v7opn"]
 [ext_resource type="Texture2D" uid="uid://bxqj5mctena28" path="res://assets/level_up_scene/basic_rounded_button.png" id="2_iufj0"]
 [ext_resource type="PackedScene" uid="uid://b1vl3j8o6suu7" path="res://scenes/skill_tree.tscn" id="4_w1n6b"]
-[ext_resource type="PackedScene" uid="uid://c38tkceppw1rq" path="res://scenes/ui/player_prepared_spells_ui.tscn" id="5_rpcnf"]
 
 [node name="LevelUpScene" type="Node2D"]
 script = ExtResource("1_bci3m")
@@ -193,12 +192,7 @@ offset_bottom = 42.0
 text = "Points left 0"
 
 [node name="SkillTree" parent="." instance=ExtResource("4_w1n6b")]
-visible = false
 position = Vector2(640, 64)
-
-[node name="PlayerPreparedSpellsUI" parent="." instance=ExtResource("5_rpcnf")]
-visible = false
-position = Vector2(488, 480)
 
 [connection signal="pressed" from="MainSceneOptions/LevelUpButton" to="." method="_on_level_up_button_pressed"]
 [connection signal="pressed" from="MainSceneOptions/PrepareSpellsButton" to="." method="_on_prepare_spells_button_pressed"]
@@ -207,3 +201,13 @@ position = Vector2(488, 480)
 [connection signal="pressed" from="CharacterAttributesOptions/Names/DarkButton" to="." method="_on_dark_button_pressed"]
 [connection signal="pressed" from="CharacterAttributesOptions/Names/NatureButton" to="." method="_on_nature_button_pressed"]
 [connection signal="pressed" from="CharacterAttributesOptions/Names/ArcaneButton" to="." method="_on_arcane_button_pressed"]
+[connection signal="pressed" from="SkillTree/LightOrb/Button" to="." method="_on_light_orb_button_pressed"]
+[connection signal="pressed" from="SkillTree/Fireball/Button" to="." method="_on_fireball_button_pressed"]
+[connection signal="pressed" from="SkillTree/Arrow/Button" to="." method="_on_arrow_button_pressed"]
+[connection signal="pressed" from="SkillTree/Bolt/Button" to="." method="_on_bolt_button_pressed"]
+
+[editable path="SkillTree"]
+[editable path="SkillTree/LightOrb"]
+[editable path="SkillTree/Fireball"]
+[editable path="SkillTree/Arrow"]
+[editable path="SkillTree/Bolt"]
