@@ -15,6 +15,7 @@ func _ready():
 	player_reference.process_mode = Node.PROCESS_MODE_DISABLED
 	player_reference.get_node("Camera2D").enabled = false
 	prepared_spells_node = player_reference.get_node("Camera2D/PlayerCombatUI/PlayerPreparedSpellsUI")
+	prepared_spells_node.visible = false
 	prepared_spells_node.get_parent().remove_child(prepared_spells_node)
 	add_child(prepared_spells_node)
 	prepared_spells_node.position = prepared_spells_position
@@ -47,6 +48,7 @@ func _on_next_level_button_pressed():
 	remove_child(prepared_spells_node)
 	var player_combat_ui_node = player_reference.get_node("Camera2D/PlayerCombatUI")
 	player_combat_ui_node.add_child(prepared_spells_node)
+	prepared_spells_node.visible = true
 	prepared_spells_node.position = player_combat_ui_node.player_prepared_spells_position
 	level_complete.emit()
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://p1brooh0755i"]
+[gd_scene load_steps=3 format=3 uid="uid://p1brooh0755i"]
 
 [ext_resource type="PackedScene" uid="uid://cppxl628jombq" path="res://assets/tileset/basic_tile_set.tscn" id="1_jlw2y"]
+[ext_resource type="Texture2D" uid="uid://rxfs4ow7ws4j" path="res://assets/dungeon_background2.png" id="2_jq4u7"]
 
 [node name="LevelVariant1" type="Node2D"]
 
@@ -12,3 +13,9 @@ position = Vector2(49, 615)
 
 [node name="EnemySpawnArea1" type="Area2D" parent="." groups=["enemy_spawn"]]
 position = Vector2(357, 623)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, 325)
+scale = Vector2(0.641741, 0.632813)
+texture = ExtResource("2_jq4u7")
