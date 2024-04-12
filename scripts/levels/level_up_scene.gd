@@ -89,6 +89,8 @@ func assing_spell_to_current_slot(spell : PackedScene):
 		player_reference.spell_3 = spell
 	elif slot == 4:
 		player_reference.spell_4 = spell
+	# this could cause problem if spell position isnt valid
+	player_reference.selected_spell = spell
 
 func _on_light_orb_button_pressed():
 	var spell = get_node("SkillTree/LightOrb").spell

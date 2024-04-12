@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cypdxntdi5x4"]
+[gd_scene load_steps=4 format=3 uid="uid://cypdxntdi5x4"]
 
 [ext_resource type="PackedScene" uid="uid://cppxl628jombq" path="res://assets/tileset/basic_tile_set.tscn" id="1_7o2pi"]
 [ext_resource type="Texture2D" uid="uid://rxfs4ow7ws4j" path="res://assets/dungeon_background2.png" id="2_i7bw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb83v"]
+size = Vector2(30, 72)
 
 [node name="LevelVariant2" type="Node2D"]
 
@@ -28,3 +31,22 @@ z_index = -1
 position = Vector2(576, 325)
 scale = Vector2(0.641741, 0.632813)
 texture = ExtResource("2_i7bw8")
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(1144, 629)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(-5, -26)
+shape = SubResource("RectangleShape2D_hb83v")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ExitArea"]
+visible = false
+offset_left = -20.0
+offset_top = -62.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 1, 0, 0.686275)
+metadata/_edit_lock_ = true

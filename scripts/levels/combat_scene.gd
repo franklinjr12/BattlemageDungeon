@@ -22,8 +22,8 @@ func on_player_died():
 func on_enemy_died():
 	enemies_count -= 1
 	if enemies_count <= 0:
-		level_complete.emit()
-		
+		allow_exit_room()
+
 func change_to_game_over():
 	var game_over_scene_inst = game_over_scene.instantiate()
 	get_tree().root.add_child(game_over_scene_inst)
@@ -42,3 +42,16 @@ func load_enemies_on_level():
 		enemy_inst.position = area.position
 		add_child(enemy_inst)
 
+func allow_exit_room() -> void:
+	var exit_area_node = get_node_or_null("ExitArea")
+	if exit_area_node:
+		exit_area_node.get_node("ColorRect").visible = true
+		exit_area_node.body_entered.connect(on_player_exit_area)
+	else:
+		finish_level()
+
+func on_player_exit_area(_body : Node2D):
+	finish_level()
+
+func finish_level() -> void:
+	level_complete.emit()
