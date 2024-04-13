@@ -50,3 +50,10 @@ offset_right = 10.0
 offset_bottom = 10.0
 color = Color(1, 1, 0, 0.686275)
 metadata/_edit_lock_ = true
+
+[node name="LevelCompleteLabel" type="Label" parent="."]
+offset_left = -58.0
+offset_top = -79.0
+offset_right = 59.0
+offset_bottom = -53.0
+text = "Level complete"

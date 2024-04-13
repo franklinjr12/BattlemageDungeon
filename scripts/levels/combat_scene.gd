@@ -43,6 +43,11 @@ func load_enemies_on_level():
 		add_child(enemy_inst)
 
 func allow_exit_room() -> void:
+	var level_complete_label_node = get_node_or_null("LevelCompleteLabel")
+	if level_complete_label_node:
+		level_complete_label_node.get_parent().remove_child(level_complete_label_node)
+		player_reference.get_node("Camera2D").add_child(level_complete_label_node)
+		level_complete_label_node.visible = true
 	var exit_area_node = get_node_or_null("ExitArea")
 	if exit_area_node:
 		exit_area_node.get_node("ColorRect").visible = true
@@ -50,8 +55,12 @@ func allow_exit_room() -> void:
 	else:
 		finish_level()
 
-func on_player_exit_area(_body : Node2D):
+func on_player_exit_area(_body : Node2D) -> void:
 	finish_level()
 
 func finish_level() -> void:
+	var level_complete_label_node = player_reference.get_node_or_null("Camera2D/LevelCompleteLabel")
+	if level_complete_label_node:
+		level_complete_label_node.get_parent().remove_child(level_complete_label_node)
+		level_complete_label_node.queue_free()
 	level_complete.emit()
