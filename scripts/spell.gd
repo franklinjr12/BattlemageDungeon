@@ -3,6 +3,7 @@ extends Area2D
 class_name Spell
 
 var damage_number = preload("res://scenes/damage_number.tscn")
+var spell_impact = preload("res://scenes/spells/spell_impact.tscn")
 
 @onready var speed = $SpellAttributes.speed
 @onready var damage = $SpellAttributes.damage
@@ -22,6 +23,9 @@ func _on_body_entered(body):
 		new_damage_number.position = position
 		new_damage_number.text = var_to_str(damage)
 		get_parent().add_child(new_damage_number)
+	var animation = spell_impact.instantiate()
+	animation.position = position
+	get_parent().add_child(animation)
 	queue_free()
 
 func set_direction(dir):

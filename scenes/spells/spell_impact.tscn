@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://3atshjh8sr5a"]
+
+[ext_resource type="Texture2D" uid="uid://csqvjg0thd23v" path="res://assets/spell_impact.png" id="1_i4dqh"]
+[ext_resource type="Script" path="res://scripts/spells/spell_impact.gd" id="2_vtd2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gpxg"]
+atlas = ExtResource("1_i4dqh")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upy3x"]
+atlas = ExtResource("1_i4dqh")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aus5t"]
+atlas = ExtResource("1_i4dqh")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5amr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gpxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upy3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aus5t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SpellImpact" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_g5amr")
+script = ExtResource("2_vtd2x")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
