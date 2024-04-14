@@ -27,9 +27,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aus5t")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [node name="SpellImpact" type="AnimatedSprite2D"]
@@ -37,3 +37,4 @@ sprite_frames = SubResource("SpriteFrames_g5amr")
 script = ExtResource("2_vtd2x")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]
