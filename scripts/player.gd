@@ -7,6 +7,7 @@ class_name Player
 @export var spell_offset_value : float = 1.5
 
 signal player_died
+signal leveled_up
 
 const PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 const INITIAL_HP = 100
@@ -20,7 +21,7 @@ var current_hp = INITIAL_HP
 var current_exp = 0
 var current_level = 0
 var next_level = 1
-var level_up_points = 5
+var level_up_points = 0
 var is_spell_on_cooldown = false
 
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
@@ -126,10 +127,9 @@ func gain_experience(experience):
 		next_level += 1
 		current_level += 1
 		level_up_points += 1
+		leveled_up.emit()
 	print("current_exp ", current_exp, " current_level ", current_level, " level_up_points ", level_up_points)
-#	var format_string = "%s was reluctant to learn %s, but now he enjoys it."
-#	var actual_string = format_string % ["Estragon", "GDScript"]
-#	print(actual_string)
+	
 
 func suffer_damage(damage):
 	current_hp -= damage

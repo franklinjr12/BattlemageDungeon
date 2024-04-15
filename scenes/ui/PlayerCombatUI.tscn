@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dliyla2p58k7y"]
+[gd_scene load_steps=9 format=3 uid="uid://dliyla2p58k7y"]
 
 [ext_resource type="Script" path="res://scripts/PlayerCombatUI.gd" id="1_x4vxs"]
 [ext_resource type="Texture2D" uid="uid://cvfcox2lr8tk0" path="res://assets/progress_bar.png" id="2_v6tnx"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dcyj70skyuqe2" path="res://assets/experience_bar_big.png" id="4_1fysk"]
 [ext_resource type="Texture2D" uid="uid://ci7bn81aialsd" path="res://assets/experience_bar_big_fill.png" id="5_f4icb"]
 [ext_resource type="PackedScene" uid="uid://c38tkceppw1rq" path="res://scenes/ui/player_prepared_spells_ui.tscn" id="6_ht1x3"]
+[ext_resource type="Texture2D" uid="uid://dnp6xsm568deb" path="res://assets/level_up_arrow.png" id="7_o0eme"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uaoid"]
+font_size = 24
 
 [node name="PlayerCombatUI" type="Node2D"]
 script = ExtResource("1_x4vxs")
@@ -45,3 +49,18 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerPreparedSpellsUI" parent="." instance=ExtResource("6_ht1x3")]
 position = Vector2(281, -57)
+
+[node name="LevelUpArrow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(665, 18)
+texture = ExtResource("7_o0eme")
+metadata/_edit_lock_ = true
+
+[node name="CurrentLevel" type="Label" parent="."]
+offset_left = 634.0
+offset_top = 4.0
+offset_right = 674.0
+offset_bottom = 41.0
+text = "0"
+label_settings = SubResource("LabelSettings_uaoid")
+metadata/_edit_lock_ = true

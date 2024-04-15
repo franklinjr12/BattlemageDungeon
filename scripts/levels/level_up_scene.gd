@@ -22,6 +22,8 @@ func _ready():
 	player_reference.recover_health()
 	set_attributes_labels()
 	$SkillTree.player_reference = player_reference
+	if player_reference.level_up_points > 0:
+		$LevelUpArrow.visible = true
 
 func _process(_delta):
 	set_attributes_labels()
@@ -50,6 +52,7 @@ func _on_next_level_button_pressed():
 	player_combat_ui_node.add_child(prepared_spells_node)
 	prepared_spells_node.visible = true
 	prepared_spells_node.position = player_combat_ui_node.player_prepared_spells_position
+	player_reference.get_node("Camera2D/PlayerCombatUI/LevelUpArrow").visible = false
 	level_complete.emit()
 
 func _on_light_button_pressed():
