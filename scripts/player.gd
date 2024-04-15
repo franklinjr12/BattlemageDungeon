@@ -27,7 +27,8 @@ var is_spell_on_cooldown = false
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
 
-var spell = preload("res://scenes/spells/spell.tscn")
+#var spell = preload("res://scenes/spells/spell.tscn")
+var spell = preload("res://scenes/spells/light_mirror.tscn")
 var spell_1 = null
 var fireball = preload("res://scenes/spells/fireball.tscn")
 var spell_2 = null

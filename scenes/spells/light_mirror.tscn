@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://betqqjpcpr7so"]
+
+[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="1_nh88e"]
+[ext_resource type="Texture2D" uid="uid://b5amlx4tbvfgc" path="res://assets/attacks_sprites/mirror_shield_spell.png" id="2_mvnid"]
+[ext_resource type="Script" path="res://scripts/spells/light_mirror.gd" id="3_tyrik"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmy2q"]
+radius = 3.0
+height = 50.0
+
+[node name="Spell" instance=ExtResource("1_nh88e")]
+dissapear_on_impact = false
+lifetime = 3.0
+rotate_on_cast = false
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_mvnid")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_pmy2q")
+
+[node name="SpellAttributes" parent="." index="2"]
+damage = 0
+speed = 0.0
+cooldown = 2.0
+
+[node name="CustomBehavior" parent="." index="4"]
+script = ExtResource("3_tyrik")
