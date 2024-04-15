@@ -127,6 +127,8 @@ func gain_experience(experience):
 		next_level += 1
 		current_level += 1
 		level_up_points += 1
+		$LevelUpAnimation.visible = true
+		$LevelUpAnimation.play()
 		leveled_up.emit()
 	print("current_exp ", current_exp, " current_level ", current_level, " level_up_points ", level_up_points)
 	
@@ -142,3 +144,7 @@ func _on_spell_timer_timeout():
 
 func recover_health():
 	current_hp = INITIAL_HP
+
+
+func _on_level_up_animation_animation_finished():
+	$LevelUpAnimation.visible = false

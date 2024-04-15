@@ -1,11 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbfl32aq4ax1p"]
+[gd_scene load_steps=13 format=3 uid="uid://cbfl32aq4ax1p"]
 
 [ext_resource type="Texture2D" uid="uid://bl38w8qnsowyq" path="res://assets/small_character.png" id="1_cdag2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nypau"]
 [ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/attributes/character_attributes.tscn" id="3_1ye1h"]
 [ext_resource type="PackedScene" uid="uid://d4e0ysfmhbvcm" path="res://scenes/attributes/character_magical_attributes.tscn" id="4_fa3dn"]
+[ext_resource type="Texture2D" uid="uid://bbcjnjyx5gwu3" path="res://assets/level_up_animation.png" id="5_jsgsa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1yuv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi7ir"]
+atlas = ExtResource("5_jsgsa")
+region = Rect2(0, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo4g0"]
+atlas = ExtResource("5_jsgsa")
+region = Rect2(100, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xdbe"]
+atlas = ExtResource("5_jsgsa")
+region = Rect2(200, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg41f"]
+atlas = ExtResource("5_jsgsa")
+region = Rect2(300, 0, 100, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4udf"]
+atlas = ExtResource("5_jsgsa")
+region = Rect2(400, 0, 100, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5ooi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi7ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo4g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xdbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg41f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4udf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
@@ -37,5 +81,11 @@ speed = 100.0
 
 [node name="CharacterMagicalAttributes" parent="." instance=ExtResource("4_fa3dn")]
 
+[node name="LevelUpAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -39)
+sprite_frames = SubResource("SpriteFrames_s5ooi")
+
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]
+[connection signal="animation_finished" from="LevelUpAnimation" to="." method="_on_level_up_animation_animation_finished"]
