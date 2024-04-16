@@ -28,7 +28,8 @@ var is_spell_on_cooldown = false
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
 
 #var spell = preload("res://scenes/spells/spell.tscn")
-var spell = preload("res://scenes/spells/light_mirror.tscn")
+#var spell = preload("res://scenes/spells/light_mirror.tscn")
+var spell = preload("res://scenes/spells/corruption_could.tscn")
 var spell_1 = null
 var fireball = preload("res://scenes/spells/fireball.tscn")
 var spell_2 = null
@@ -38,6 +39,7 @@ var bolt = preload("res://scenes/spells/bolt.tscn")
 var spell_4 = null
 var selected_spell = null
 var current_spell_timer = null
+var damage_number = preload("res://scenes/damage_number.tscn")
 
 func _ready():
 	spell_1 = spell
@@ -136,6 +138,10 @@ func gain_experience(experience):
 
 func suffer_damage(damage):
 	current_hp -= damage
+	var new_damage_number = damage_number.instantiate()
+	new_damage_number.position = position
+	new_damage_number.text = var_to_str(damage)
+	get_parent().add_child(new_damage_number)
 	if current_hp <= 0:
 		print("player died")
 		player_died.emit()

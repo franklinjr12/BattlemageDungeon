@@ -15,6 +15,7 @@ var direction_chasing = Vector2.ZERO
 var attack_cooldown = 0.5
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var attack = preload("res://scenes/melee_attack.tscn")
+var damage_number = preload("res://scenes/damage_number.tscn")
 
 var can_attack = false
 var attack_on_cooldown = false
@@ -50,6 +51,10 @@ func give_exp():
 
 func suffer_damage(damage):
 	$HealthBar.value -= damage
+	var new_damage_number = damage_number.instantiate()
+	new_damage_number.position = position
+	new_damage_number.text = var_to_str(damage)
+	get_parent().add_child(new_damage_number)
 	if $HealthBar.value <= 0:
 		died()
 

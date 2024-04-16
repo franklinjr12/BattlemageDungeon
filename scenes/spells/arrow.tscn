@@ -26,4 +26,6 @@ damage = 10
 speed = 250.0
 cooldown = 0.5
 
+[node name="CustomBehavior" type="Node" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

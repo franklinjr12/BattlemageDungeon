@@ -6,7 +6,6 @@ class_name Spell
 @export var lifetime : float = 0
 @export var rotate_on_cast : bool = true
 
-var damage_number = preload("res://scenes/damage_number.tscn")
 var spell_impact = preload("res://scenes/spells/spell_impact.tscn")
 
 @onready var speed = $SpellAttributes.speed
@@ -24,17 +23,13 @@ func _process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
-	if $CustomBehavior.get_script() == null:
+	if $CustomBehavior.get_script() != null:
 		$CustomBehavior.on_body_entered(body)
 	else:
 		if body is StaticBody2D:
 			print("spell do animation")
 		elif body is CharacterBody2D:
 			body.suffer_damage(damage)
-			var new_damage_number = damage_number.instantiate()
-			new_damage_number.position = position
-			new_damage_number.text = var_to_str(damage)
-			get_parent().add_child(new_damage_number)
 	if dissapear_on_impact:
 		var animation = spell_impact.instantiate()
 		animation.position = position

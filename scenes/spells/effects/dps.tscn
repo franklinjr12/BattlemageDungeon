@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bonx1iyp51as2"]
+
+[ext_resource type="Script" path="res://scripts/spells/effects/dps.gd" id="1_gfnch"]
+
+[node name="dps" type="Node"]
+script = ExtResource("1_gfnch")
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]
