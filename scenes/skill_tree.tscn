@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1vl3j8o6suu7"]
+[gd_scene load_steps=12 format=3 uid="uid://b1vl3j8o6suu7"]
 
 [ext_resource type="Script" path="res://scripts/skill_tree.gd" id="1_02mej"]
 [ext_resource type="PackedScene" uid="uid://bcl3hcng1wdim" path="res://scenes/skill_tree_item.tscn" id="1_v7ow3"]
 [ext_resource type="Texture2D" uid="uid://bysdku2cb12fg" path="res://assets/attacks_sprites/basic_spell_20x20.png" id="2_i77t4"]
-[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="3_dpuor"]
+[ext_resource type="PackedScene" uid="uid://csa6tw24irbv3" path="res://scenes/spells/light_orb.tscn" id="3_ocni3"]
 [ext_resource type="PackedScene" uid="uid://c7ws2dxw0l3xf" path="res://scenes/spells/fireball.tscn" id="5_s6b1e"]
 [ext_resource type="PackedScene" uid="uid://bc2bx7t0h5q7m" path="res://scenes/spells/arrow.tscn" id="6_oaw6e"]
 [ext_resource type="PackedScene" uid="uid://byvlnxbr1jq87" path="res://scenes/spells/bolt.tscn" id="7_k2pno"]
+[ext_resource type="PackedScene" uid="uid://betqqjpcpr7so" path="res://scenes/spells/light_mirror.tscn" id="8_xo65a"]
+[ext_resource type="PackedScene" uid="uid://c0xfoon1yfqlw" path="res://scenes/spells/magic_missiles.tscn" id="9_g7xrj"]
+[ext_resource type="PackedScene" uid="uid://gx0foyvkussc" path="res://scenes/spells/earth_spike.tscn" id="10_h33ow"]
+[ext_resource type="PackedScene" uid="uid://dwssdh23s0enw" path="res://scenes/spells/corruption_could.tscn" id="11_2nm5c"]
 
 [node name="SkillTree" type="Node2D"]
 script = ExtResource("1_02mej")
@@ -28,7 +32,7 @@ grow_vertical = 2
 [node name="LightOrb" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(224, 96)
 light_attribute_required = 1
-spell = ExtResource("3_dpuor")
+spell = ExtResource("3_ocni3")
 
 [node name="TextureRect" parent="LightOrb" index="0"]
 texture = ExtResource("2_i77t4")
@@ -61,7 +65,43 @@ spell = ExtResource("7_k2pno")
 [node name="TextureRect" parent="Bolt" index="0"]
 texture = ExtResource("2_i77t4")
 
+[node name="LightMirror" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(328, 152)
+light_attribute_required = 1
+spell = ExtResource("8_xo65a")
+
+[node name="TextureRect" parent="LightMirror" index="0"]
+texture = ExtResource("2_i77t4")
+
+[node name="MagicMissiles" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(224, 48)
+light_attribute_required = 1
+spell = ExtResource("9_g7xrj")
+
+[node name="TextureRect" parent="MagicMissiles" index="0"]
+texture = ExtResource("2_i77t4")
+
+[node name="EarthSpike" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(224, 248)
+light_attribute_required = 1
+spell = ExtResource("10_h33ow")
+
+[node name="TextureRect" parent="EarthSpike" index="0"]
+texture = ExtResource("2_i77t4")
+
+[node name="CorruptionCloud" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(128, 152)
+light_attribute_required = 1
+spell = ExtResource("11_2nm5c")
+
+[node name="TextureRect" parent="CorruptionCloud" index="0"]
+texture = ExtResource("2_i77t4")
+
 [editable path="LightOrb"]
 [editable path="Fireball"]
 [editable path="Arrow"]
 [editable path="Bolt"]
+[editable path="LightMirror"]
+[editable path="MagicMissiles"]
+[editable path="EarthSpike"]
+[editable path="CorruptionCloud"]

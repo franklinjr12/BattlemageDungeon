@@ -111,3 +111,23 @@ func _on_arrow_button_pressed():
 func _on_bolt_button_pressed():
 	var spell = get_node("SkillTree/Bolt").spell
 	assing_spell_to_current_slot(spell)
+
+
+func _on_light_mirror_button_pressed():
+	var spell = get_node("SkillTree/LightMirror").spell
+	assing_spell_to_current_slot(spell)
+
+
+func _on_magic_missiles_button_pressed():
+	var spell = get_node("SkillTree/MagicMissiles").spell
+	assing_spell_to_current_slot(spell)
+
+
+func _on_earth_spike_button_pressed():
+	var spell = get_node("SkillTree/EarthSpike").spell
+	assing_spell_to_current_slot(spell)
+
+
+func _on_corruption_cloud_button_pressed():
+	var spell = get_node("SkillTree/CorruptionCloud").spell
+	assing_spell_to_current_slot(spell)

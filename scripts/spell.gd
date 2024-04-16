@@ -23,7 +23,9 @@ func _process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
-	if $CustomBehavior.get_script() != null:
+	if body == who_casted:
+		return
+	if $CustomBehavior.get_script() != null and $CustomBehavior.has_method("on_body_entered"):
 		$CustomBehavior.on_body_entered(body)
 	else:
 		if body is StaticBody2D:

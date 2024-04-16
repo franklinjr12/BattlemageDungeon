@@ -28,8 +28,11 @@ var is_spell_on_cooldown = false
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
 
 #var spell = preload("res://scenes/spells/spell.tscn")
+var spell = preload("res://scenes/spells/light_orb.tscn")
 #var spell = preload("res://scenes/spells/light_mirror.tscn")
-var spell = preload("res://scenes/spells/corruption_could.tscn")
+#var spell = preload("res://scenes/spells/corruption_could.tscn")
+#var spell = preload("res://scenes/spells/magic_missiles.tscn")
+#var spell = preload("res://scenes/spells/earth_spike.tscn")
 var spell_1 = null
 var fireball = preload("res://scenes/spells/fireball.tscn")
 var spell_2 = null
@@ -105,6 +108,7 @@ func cast_spell():
 	var running_scene = get_parent()
 	if running_scene.name == "world" and selected_spell != null:
 		var new_projectile = selected_spell.instantiate()
+		print("casting ", new_projectile.name)
 		new_projectile.who_casted = self
 		var mpos = get_global_mouse_position()
 		var offset_position = position
@@ -147,7 +151,7 @@ func suffer_damage(damage):
 		player_died.emit()
 
 func _on_spell_timer_timeout():
-	is_spell_on_cooldown = false
+	reset_spell_cooldown()
 
 func recover_health():
 	current_hp = INITIAL_HP
@@ -155,3 +159,6 @@ func recover_health():
 
 func _on_level_up_animation_animation_finished():
 	$LevelUpAnimation.visible = false
+
+func reset_spell_cooldown() -> void:
+	is_spell_on_cooldown = false

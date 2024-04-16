@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://gx0foyvkussc"]
+
+[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="1_bvb2h"]
+[ext_resource type="Texture2D" uid="uid://0ra4cp44nb6h" path="res://assets/attacks_sprites/earth_spike.png" id="2_rf7e3"]
+[ext_resource type="Script" path="res://scripts/spells/earth_spike.gd" id="3_hl5q2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qp5b"]
+size = Vector2(48, 26)
+
+[node name="Spell" instance=ExtResource("1_bvb2h")]
+dissapear_on_impact = false
+lifetime = 1.0
+rotate_on_cast = false
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, 2)
+texture = ExtResource("2_rf7e3")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_4qp5b")
+
+[node name="SpellAttributes" parent="." index="2"]
+damage = 100
+speed = 1.0
+cooldown = 2.0
+
+[node name="CustomBehavior" parent="." index="4"]
+script = ExtResource("3_hl5q2")

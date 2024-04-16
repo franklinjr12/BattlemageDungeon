@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://csa6tw24irbv3"]
+
+[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="1_adln2"]
+
+[node name="LightOrb" instance=ExtResource("1_adln2")]
