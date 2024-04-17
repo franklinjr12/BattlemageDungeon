@@ -70,7 +70,6 @@ func _physics_process(delta):
 			$JumpTimer.start()
 	if Input.is_action_just_released("player_jump"):
 		jumping = false
-	velocity.x = 0 # what if external forces happens to velocity?
 	if Input.is_action_pressed("player_move_right"):
 		velocity.x += player_speed*delta
 	if Input.is_action_pressed("player_move_left"):
@@ -78,6 +77,7 @@ func _physics_process(delta):
 	if jumping:
 		velocity.y += PLAYER_JUMP_VALUE*delta
 	move_and_slide()
+	velocity.x = 0 # so the player doesnt continue to slide after colliding with edges
 
 func check_inputs():
 	if Input.is_action_just_pressed("cast"):
