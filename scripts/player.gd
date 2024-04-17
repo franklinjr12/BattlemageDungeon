@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var player_speed = 400
+#@export var player_speed = 400
+@export var player_speed = 8000
 @export var PLAYER_JUMP_VALUE = -2000
 @export var spell_offset_value : float = 1.5
 
@@ -69,14 +70,11 @@ func _physics_process(delta):
 			$JumpTimer.start()
 	if Input.is_action_just_released("player_jump"):
 		jumping = false
+	velocity.x = 0 # what if external forces happens to velocity?
 	if Input.is_action_pressed("player_move_right"):
-		position.x += player_speed*delta
-	if Input.is_action_just_released("player_move_right"):
-		position.x -= player_speed*delta
+		velocity.x += player_speed*delta
 	if Input.is_action_pressed("player_move_left"):
-		position.x -= player_speed*delta
-	if Input.is_action_just_released("player_move_left"):
-		position.x += player_speed*delta
+		velocity.x += -player_speed*delta
 	if jumping:
 		velocity.y += PLAYER_JUMP_VALUE*delta
 	move_and_slide()
