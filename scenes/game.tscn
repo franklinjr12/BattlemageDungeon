@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ghounb6os5im"]
+[gd_scene load_steps=4 format=3 uid="uid://ghounb6os5im"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_p2bi8"]
-[ext_resource type="PackedScene" uid="uid://ckpg45e3ditm3" path="res://scenes/test_scene.tscn" id="2_8wark"]
+[ext_resource type="PackedScene" uid="uid://cbfl32aq4ax1p" path="res://scenes/player.tscn" id="2_oqm0p"]
+[ext_resource type="PackedScene" uid="uid://dliyla2p58k7y" path="res://scenes/ui/PlayerCombatUI.tscn" id="3_tul28"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_p2bi8")
 
-[node name="TestScene" parent="." instance=ExtResource("2_8wark")]
+[node name="Player" parent="." instance=ExtResource("2_oqm0p")]
+position = Vector2(529, 453)
 
-[editable path="TestScene"]
-[editable path="TestScene/Player/Camera2D/PlayerCombatUI"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.355, 1.355)
+
+[node name="PlayerCombatUI" parent="Player/Camera2D" instance=ExtResource("3_tul28")]
+position = Vector2(-413, 185)

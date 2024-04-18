@@ -2,22 +2,26 @@ extends Node
 
 const DEFAULT_LEVEL_NAME = "world"
 const LEVEL_UP_SCENE_NAME = "levelup"
-const LEVELS_TO_LEVEL_UP_SCENE = 1
+const LEVELS_TO_LEVEL_UP_SCENE = 3
 
 var player_reference = null
 var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
-var completed_levels = 0
+var completed_levels = 1
 
 func _ready():
 	set_player_reference()
-	set_level_name()
+	var level = create_level()
+	remove_child(player_reference)
+	level.add_child(player_reference)
+	level.name = DEFAULT_LEVEL_NAME
+	level.set_script(scene_combat_script)
+	var player_spawn_position = level.get_node("PlayerSpawnArea").position
+	player_reference.position = player_spawn_position
+	add_child(level)
 	connect_to_level_complete(DEFAULT_LEVEL_NAME)
-	
-func set_level_name():
-	$TestScene.name = DEFAULT_LEVEL_NAME
 
 func set_player_reference():
-	player_reference = $TestScene/Player
+	player_reference = $Player
 
 func on_level_complete():
 	var current_level = get_node_or_null(DEFAULT_LEVEL_NAME)
@@ -43,7 +47,7 @@ func on_level_complete():
 
 func create_level() -> Node2D:
 	# select one of the levels randomly
-	var level_index = var_to_str(randi_range(1,3))
+	var level_index = var_to_str(randi_range(1,4))
 	var format_string = "res://scenes/levels/level_variant_%s.tscn"
 	var actual_string = format_string % [level_index]
 	print("chosen level ", actual_string)
