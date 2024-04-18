@@ -48,7 +48,7 @@ func create_level() -> Node2D:
 	var actual_string = format_string % [level_index]
 	print("chosen level ", actual_string)
 	return load(actual_string).instantiate()
-#	return load("res://scenes/levels/level_variant_0.tscn").instantiate()
+#	return load("res://scenes/levels/level_variant_0.tscn").instantiate() # test level
 
 func connect_to_level_complete(level_name : String):
 	get_node(level_name).level_complete.connect(on_level_complete)

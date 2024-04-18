@@ -20,6 +20,9 @@ shape = SubResource("RectangleShape2D_2b042")
 offset_top = -57.0
 offset_bottom = -43.0
 
+[node name="PlayerDetectionArea" parent="." index="3"]
+visible = true
+
 [node name="CharacterAttributes" parent="." index="6"]
 health = 200
 damage = 30

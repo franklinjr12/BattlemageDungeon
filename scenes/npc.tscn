@@ -3,14 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://ducdnicy2y3g1" path="res://assets/enemies_sprites/big_demon_run_anim_f3.png" id="1_cy5hd"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_obk1u"]
 [ext_resource type="PackedScene" uid="uid://cxqpy801bl3o5" path="res://scenes/health_bar.tscn" id="2_sgbx8"]
-[ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/character_attributes.tscn" id="4_ntka2"]
+[ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/attributes/character_attributes.tscn" id="4_ntka2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
 radius = 9.0
 height = 36.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqdss"]
-size = Vector2(360, 100)
+size = Vector2(500, 100)
 
 [node name="NPC" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_obk1u")
@@ -38,7 +38,7 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerDetectionShape" type="CollisionShape2D" parent="PlayerDetectionArea"]
 visibility_layer = 2
-position = Vector2(1, -37)
+position = Vector2(1, -26)
 shape = SubResource("RectangleShape2D_fqdss")
 metadata/_edit_lock_ = true
 

@@ -14,18 +14,6 @@ layer_0/tile_data = PackedInt32Array(2621439, 131072, 1, 2555903, 131072, 1, 249
 [node name="PlayerSpawnArea" type="Area2D" parent="."]
 position = Vector2(49, 615)
 
-[node name="EnemySpawnArea1" type="Area2D" parent="." groups=["enemy_spawn"]]
-position = Vector2(40, 415)
-
-[node name="EnemySpawnArea2" type="Area2D" parent="." groups=["enemy_spawn"]]
-position = Vector2(1088, 450)
-
-[node name="EnemySpawnArea3" type="Area2D" parent="." groups=["enemy_spawn"]]
-position = Vector2(1108, 621)
-
-[node name="EnemySpawnArea4" type="Area2D" parent="." groups=["enemy_spawn"]]
-position = Vector2(621, 344)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(576, 325)
@@ -57,3 +45,32 @@ offset_top = -79.0
 offset_right = 59.0
 offset_bottom = -53.0
 text = "Level complete"
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="EnemySpawnArea1" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(40, 415)
+
+[node name="EnemySpawnArea2" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(1088, 450)
+
+[node name="EnemySpawnArea3" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(1108, 621)
+
+[node name="EnemySpawnArea4" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(514, 315)
+
+[node name="EnemySpawnArea5" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(1115, 124)
+
+[node name="EnemySpawnArea6" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(107, 320)
+
+[node name="EnemySpawnArea7" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(612, 500)
+
+[node name="EnemySpawnArea8" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(742, 255)
+
+[node name="EnemySpawnArea9" type="Area2D" parent="EnemySpawns" groups=["enemy_spawn"]]
+position = Vector2(109, 220)

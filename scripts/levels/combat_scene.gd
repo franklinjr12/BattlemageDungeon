@@ -35,12 +35,19 @@ func load_enemies_on_level():
 	enemies_list.append(load(enemies_folder + "rat.tscn"))
 	enemies_list.append(load(enemies_folder + "bear.tscn"))
 	enemies_list.append(load(enemies_folder + "creature1.tscn"))
-	var enemies_spawn_area = get_tree().get_nodes_in_group("enemy_spawn")
 	var arr_size = enemies_list.size()
-	for area in enemies_spawn_area:
+	var enemies_spawn_area = get_tree().get_nodes_in_group("enemy_spawn")
+	var num_enemies_to_spawn = randi_range(3,5)
+	for i in num_enemies_to_spawn:
 		var enemy_inst = enemies_list[randi_range(0,arr_size-1)].instantiate()
-		enemy_inst.position = area.position
+		var random_area = enemies_spawn_area.pick_random()
+		enemies_spawn_area.erase(random_area)
+		enemy_inst.position = random_area.position
 		add_child(enemy_inst)
+#	for area in enemies_spawn_area:
+#		var enemy_inst = enemies_list[randi_range(0,arr_size-1)].instantiate()
+#		enemy_inst.position = area.position
+#		add_child(enemy_inst)
 
 func allow_exit_room() -> void:
 	var level_complete_label_node = get_node_or_null("LevelCompleteLabel")
