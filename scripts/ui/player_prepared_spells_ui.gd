@@ -49,3 +49,7 @@ func assign_new_spell_to_slot(spell : Spell, slot : int):
 	var tex = ImageTexture.create_from_image(img)
 	get_node("HBoxContainer/Slot"+var_to_str(slot)).texture = tex
 
+func set_spells_cooldown(cooldown : bool) -> void:
+	for i in 4:
+		var current = get_node("HBoxContainer/Slot" + var_to_str(i+1))
+		current.get_node("CooldownColorRect").visible = cooldown

@@ -1,12 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbfl32aq4ax1p"]
+[gd_scene load_steps=18 format=3 uid="uid://cbfl32aq4ax1p"]
 
-[ext_resource type="Texture2D" uid="uid://bl38w8qnsowyq" path="res://assets/small_character.png" id="1_cdag2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nypau"]
+[ext_resource type="Texture2D" uid="uid://d02qyywvqccl7" path="res://assets/player/idle1.png" id="2_wj6id"]
 [ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/attributes/character_attributes.tscn" id="3_1ye1h"]
 [ext_resource type="PackedScene" uid="uid://d4e0ysfmhbvcm" path="res://scenes/attributes/character_magical_attributes.tscn" id="4_fa3dn"]
 [ext_resource type="Texture2D" uid="uid://bbcjnjyx5gwu3" path="res://assets/level_up_animation.png" id="5_jsgsa"]
+[ext_resource type="Texture2D" uid="uid://d2723drfjbi8g" path="res://assets/player/running1.png" id="6_r7mx2"]
+[ext_resource type="Texture2D" uid="uid://prsclxw5oaw5" path="res://assets/player/running2.png" id="7_op5ht"]
+[ext_resource type="Texture2D" uid="uid://cnxnoklxu4h2k" path="res://assets/player/falling.png" id="8_n0x5g"]
+[ext_resource type="Texture2D" uid="uid://rcofpisnak8p" path="res://assets/player/jumping.png" id="9_ljec7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1yuv"]
+radius = 9.0
+height = 40.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fi7ir"]
 atlas = ExtResource("5_jsgsa")
@@ -51,16 +57,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwwbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_r7mx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_op5ht")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_nypau")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_cdag2")
+[node name="IdleSprite" type="Sprite2D" parent="."]
+position = Vector2(-2, -11)
+texture = ExtResource("2_wj6id")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 7
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_u1yuv")
 
 [node name="JumpTimer" type="Timer" parent="."]
@@ -85,6 +107,22 @@ speed = 100.0
 visible = false
 position = Vector2(1, -39)
 sprite_frames = SubResource("SpriteFrames_s5ooi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(2, -9)
+sprite_frames = SubResource("SpriteFrames_jwwbq")
+animation = &"running"
+
+[node name="FallingSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -13)
+texture = ExtResource("8_n0x5g")
+
+[node name="JumpingSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+texture = ExtResource("9_ljec7")
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]

@@ -9,6 +9,8 @@ class_name Player
 
 signal player_died
 signal leveled_up
+signal spells_on_cooldown
+signal spells_off_cooldown
 
 const PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 const INITIAL_HP = 100
@@ -76,8 +78,37 @@ func _physics_process(delta):
 		velocity.x += -player_speed*delta
 	if jumping:
 		velocity.y += PLAYER_JUMP_VALUE*delta
+	handle_animation()
 	move_and_slide()
 	velocity.x = 0 # so the player doesnt continue to slide after colliding with edges
+
+func handle_animation():
+	if velocity.y < 0:
+		$IdleSprite.visible = false
+		$JumpingSprite.visible = true
+		$FallingSprite.visible = false
+		$AnimatedSprite2D.visible = false
+	elif velocity.y > 0:
+		$IdleSprite.visible = false
+		$JumpingSprite.visible = false
+		$FallingSprite.visible = true
+		$AnimatedSprite2D.visible = false
+	elif velocity.x != 0:
+		$IdleSprite.visible = false
+		$JumpingSprite.visible = false
+		$FallingSprite.visible = false
+		$AnimatedSprite2D.visible = true
+		$AnimatedSprite2D.play("running")
+	else:
+		$IdleSprite.visible = true
+		$JumpingSprite.visible = false
+		$FallingSprite.visible = false
+		$AnimatedSprite2D.visible = false
+		$AnimatedSprite2D.stop()
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 
 func check_inputs():
 	if Input.is_action_just_pressed("cast"):
@@ -125,6 +156,7 @@ func cast_spell():
 		$SpellTimer.wait_time = new_projectile.cooldown
 		$SpellTimer.start()
 		is_spell_on_cooldown = true
+		spells_on_cooldown.emit()
 
 func gain_experience(experience):
 	current_exp += experience
@@ -160,3 +192,4 @@ func _on_level_up_animation_animation_finished():
 
 func reset_spell_cooldown() -> void:
 	is_spell_on_cooldown = false
+	spells_off_cooldown.emit()

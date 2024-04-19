@@ -20,6 +20,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.419608)
 
+[node name="CooldownColorRect" type="ColorRect" parent="HBoxContainer/Slot1"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 0.419608)
+
 [node name="Slot2" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_4lvy6")
@@ -29,6 +35,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.419608)
+
+[node name="CooldownColorRect" type="ColorRect" parent="HBoxContainer/Slot2"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 0.419608)
 
 [node name="Slot3" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
@@ -40,6 +52,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.419608)
 
+[node name="CooldownColorRect" type="ColorRect" parent="HBoxContainer/Slot3"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 0.419608)
+
 [node name="Slot4" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_4lvy6")
@@ -49,3 +67,9 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 0, 0, 0.419608)
+
+[node name="CooldownColorRect" type="ColorRect" parent="HBoxContainer/Slot4"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 0.419608)

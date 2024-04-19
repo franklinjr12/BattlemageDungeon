@@ -8,6 +8,7 @@ const player_prepared_spells_position = Vector2(281, -57)
 func _ready():
 	player = get_parent().get_parent()
 	listen_player_leveled_up_signal()
+	listen_player_spells_cooldowns_signal()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -31,3 +32,13 @@ func listen_player_leveled_up_signal() -> void:
 func on_player_leveled_up() -> void:
 	$CurrentLevel.text = var_to_str(player.current_level)
 	$LevelUpArrow.visible = true
+
+func listen_player_spells_cooldowns_signal() -> void:
+	player.spells_on_cooldown.connect(on_player_spells_on_cooldown)
+	player.spells_off_cooldown.connect(on_player_spells_off_cooldown)
+
+func on_player_spells_on_cooldown() -> void:
+	$PlayerPreparedSpellsUI.set_spells_cooldown(true)
+
+func on_player_spells_off_cooldown() -> void:
+	$PlayerPreparedSpellsUI.set_spells_cooldown(false)
