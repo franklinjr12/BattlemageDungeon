@@ -22,10 +22,12 @@ var player_acceleration = Vector2.ZERO
 var jumping = false
 var current_hp = INITIAL_HP
 var current_exp = 0
-var current_level = 0
-var next_level = 1
-var level_up_points = 0
-var is_spell_on_cooldown = false
+var current_level : int = 0
+var next_level : int = 1
+var level_up_points : int = 0
+var is_spell_on_cooldown : bool = false
+var should_flip : bool = false
+
 
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
@@ -74,8 +76,10 @@ func _physics_process(delta):
 		jumping = false
 	if Input.is_action_pressed("player_move_right"):
 		velocity.x += player_speed*delta
+		should_flip = false
 	if Input.is_action_pressed("player_move_left"):
 		velocity.x += -player_speed*delta
+		should_flip = true
 	if jumping:
 		velocity.y += PLAYER_JUMP_VALUE*delta
 	handle_animation()
@@ -105,10 +109,16 @@ func handle_animation():
 		$FallingSprite.visible = false
 		$AnimatedSprite2D.visible = false
 		$AnimatedSprite2D.stop()
-	if velocity.x < 0:
+	if should_flip:
 		$AnimatedSprite2D.flip_h = true
+		$IdleSprite.flip_h = true
+		$JumpingSprite.flip_h = true
+		$FallingSprite.flip_h = true
 	else:
 		$AnimatedSprite2D.flip_h = false
+		$IdleSprite.flip_h = false
+		$JumpingSprite.flip_h = false
+		$FallingSprite.flip_h = false
 
 func check_inputs():
 	if Input.is_action_just_pressed("cast"):
