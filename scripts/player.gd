@@ -27,7 +27,7 @@ var next_level : int = 1
 var level_up_points : int = 0
 var is_spell_on_cooldown : bool = false
 var should_flip : bool = false
-
+var sprites = null
 
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
@@ -57,6 +57,7 @@ func _ready():
 	selected_spell = spell_1
 	$JumpTimer.one_shot = true
 	$JumpTimer.wait_time = PLAYER_JUMP_TIMEOUT_SECONDS
+	sprites = [$IdleSprite, $AnimatedSprite2D, $FallingSprite, $JumpingSprite]
 
 func _process(_delta):
 	check_inputs()
@@ -182,6 +183,7 @@ func gain_experience(experience):
 
 func suffer_damage(damage):
 	current_hp -= damage
+	flash_sprites()
 	var new_damage_number = damage_number.instantiate()
 	new_damage_number.position = position
 	new_damage_number.text = var_to_str(damage)
@@ -190,6 +192,11 @@ func suffer_damage(damage):
 		print("player died")
 		player_died.emit()
 
+func flash_sprites():
+	for e in sprites:
+		e.material.set_shader_parameter("flash_modifier", 0.6)
+	$SpriteFlashTimer.start()
+	
 func _on_spell_timer_timeout():
 	reset_spell_cooldown()
 
@@ -203,3 +210,9 @@ func _on_level_up_animation_animation_finished():
 func reset_spell_cooldown() -> void:
 	is_spell_on_cooldown = false
 	spells_off_cooldown.emit()
+
+
+func _on_sprite_flash_timer_timeout():
+	for e in sprites:
+		e.material.set_shader_parameter("flash_modifier", 0)
+

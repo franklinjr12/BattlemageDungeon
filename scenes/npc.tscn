@@ -1,9 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ddsp1rokso7"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ddsp1rokso7"]
 
 [ext_resource type="Texture2D" uid="uid://ducdnicy2y3g1" path="res://assets/enemies_sprites/big_demon_run_anim_f3.png" id="1_cy5hd"]
 [ext_resource type="Script" path="res://scripts/npc.gd" id="1_obk1u"]
 [ext_resource type="PackedScene" uid="uid://cxqpy801bl3o5" path="res://scenes/health_bar.tscn" id="2_sgbx8"]
+[ext_resource type="Shader" path="res://assets/shaders/white_mix.gdshader" id="2_tivh8"]
 [ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/attributes/character_attributes.tscn" id="4_ntka2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfwmd"]
+resource_local_to_scene = true
+shader = ExtResource("2_tivh8")
+shader_parameter/flash_modifier = 0.6
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
 radius = 9.0
@@ -16,6 +22,7 @@ size = Vector2(500, 100)
 script = ExtResource("1_obk1u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dfwmd")
 texture = ExtResource("1_cy5hd")
 metadata/_edit_lock_ = true
 
@@ -55,6 +62,11 @@ damage = 10
 speed = 100.0
 drop_experience = 10
 
+[node name="SpriteFlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="SpriteFlashTimer" to="." method="_on_sprite_flash_timer_timeout"]

@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://csqwoqusu1q0q"]
+[gd_scene load_steps=5 format=3 uid="uid://csqwoqusu1q0q"]
 
 [ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_wvvfm"]
+[ext_resource type="Shader" path="res://assets/shaders/white_mix.gdshader" id="2_ka1lo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jutkv"]
+resource_local_to_scene = true
+shader = ExtResource("2_ka1lo")
+shader_parameter/flash_modifier = 0.6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2b042"]
 size = Vector2(6.61417, 8.18898)
 
 [node name="Creature1" instance=ExtResource("1_wvvfm")]
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_jutkv")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0.5, 0.999999)

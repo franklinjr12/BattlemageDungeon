@@ -25,6 +25,7 @@ func _ready():
 	$HealthBar.max_value = $CharacterAttributes.health
 	$HealthBar.value = $HealthBar.max_value
 	attack_range = get_x_size()
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0)
 
 func _process(delta):
 	if current_state == NpcState.IDLE:
@@ -51,6 +52,8 @@ func give_exp():
 
 func suffer_damage(damage):
 	$HealthBar.value -= damage
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0.6)
+	$SpriteFlashTimer.start()
 	var new_damage_number = damage_number.instantiate()
 	new_damage_number.position = position
 	new_damage_number.text = var_to_str(damage)
@@ -132,3 +135,7 @@ func get_x_size() -> float:
 
 func change_state(state : NpcState):
 	current_state = state
+
+
+func _on_sprite_flash_timer_timeout():
+	$Sprite2D.material.set_shader_parameter("flash_modifier", 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbfl32aq4ax1p"]
+[gd_scene load_steps=19 format=3 uid="uid://cbfl32aq4ax1p"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_nypau"]
+[ext_resource type="Material" uid="uid://4fviyvh7wbyb" path="res://assets/shaders/white_flash_material.tres" id="2_rmdri"]
 [ext_resource type="Texture2D" uid="uid://d02qyywvqccl7" path="res://assets/player/idle1.png" id="2_wj6id"]
 [ext_resource type="PackedScene" uid="uid://bpiobs67oremc" path="res://scenes/attributes/character_attributes.tscn" id="3_1ye1h"]
 [ext_resource type="PackedScene" uid="uid://d4e0ysfmhbvcm" path="res://scenes/attributes/character_magical_attributes.tscn" id="4_fa3dn"]
@@ -77,6 +78,7 @@ collision_mask = 5
 script = ExtResource("1_nypau")
 
 [node name="IdleSprite" type="Sprite2D" parent="."]
+material = ExtResource("2_rmdri")
 position = Vector2(-2, -11)
 texture = ExtResource("2_wj6id")
 
@@ -110,20 +112,28 @@ sprite_frames = SubResource("SpriteFrames_s5ooi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
+material = ExtResource("2_rmdri")
 position = Vector2(2, -9)
 sprite_frames = SubResource("SpriteFrames_jwwbq")
 animation = &"running"
 
 [node name="FallingSprite" type="Sprite2D" parent="."]
 visible = false
+material = ExtResource("2_rmdri")
 position = Vector2(-1, -13)
 texture = ExtResource("8_n0x5g")
 
 [node name="JumpingSprite" type="Sprite2D" parent="."]
 visible = false
+material = ExtResource("2_rmdri")
 position = Vector2(0, -10)
 texture = ExtResource("9_ljec7")
+
+[node name="SpriteFlashTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
 [connection signal="timeout" from="SpellTimer" to="." method="_on_spell_timer_timeout"]
 [connection signal="animation_finished" from="LevelUpAnimation" to="." method="_on_level_up_animation_animation_finished"]
+[connection signal="timeout" from="SpriteFlashTimer" to="." method="_on_sprite_flash_timer_timeout"]
