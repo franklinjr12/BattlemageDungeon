@@ -159,6 +159,8 @@ func cast_spell():
 			offset_position.x += offset_x
 		else:
 			offset_position.x -= offset_x
+		offset_position.y -= 10
+		print("projectile pos ", offset_position)
 		var dir = mpos - offset_position
 		dir = dir.normalized()
 		new_projectile.set_direction(dir)

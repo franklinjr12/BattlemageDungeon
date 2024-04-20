@@ -128,9 +128,9 @@ func get_x_size() -> float:
 	elif shape is CapsuleShape2D:
 		# in some the capsule is rotated, so the actual x size is on height
 		if $CollisionShape2D.rotation != 0:
-			return shape.height
+			return shape.height * 1.3
 		else:
-			return shape.radius
+			return shape.radius * 1.3
 	return 1
 
 func change_state(state : NpcState):

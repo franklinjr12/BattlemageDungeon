@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://xpbgdxmob05c"]
+[gd_scene load_steps=5 format=3 uid="uid://xpbgdxmob05c"]
 
 [ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_mhde8"]
 [ext_resource type="Texture2D" uid="uid://cypr6wfw6fwgy" path="res://assets/enemies_sprites/rat.png" id="2_c7em5"]
+[ext_resource type="Shader" path="res://assets/shaders/white_mix.gdshader" id="2_r4b3l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3qtd"]
+resource_local_to_scene = true
+shader = ExtResource("2_r4b3l")
+shader_parameter/flash_modifier = 0.6
 
 [node name="Rat" instance=ExtResource("1_mhde8")]
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_u3qtd")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_c7em5")
 

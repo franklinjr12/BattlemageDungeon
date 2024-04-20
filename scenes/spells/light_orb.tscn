@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://csa6tw24irbv3"]
+[gd_scene load_steps=4 format=3 uid="uid://csa6tw24irbv3"]
 
 [ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="1_adln2"]
+[ext_resource type="Texture2D" uid="uid://bubot5hkukflj" path="res://assets/shaders/spotlight_1.png" id="2_i2lnq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v447m"]
+blend_mode = 1
 
 [node name="LightOrb" instance=ExtResource("1_adln2")]
+
+[node name="Glow" type="Sprite2D" parent="." index="5"]
+material = SubResource("CanvasItemMaterial_v447m")
+texture = ExtResource("2_i2lnq")

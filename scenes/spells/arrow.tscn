@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bo3nmm1jdr4ci" path="res://scenes/spells/spell_attributes.tscn" id="3_06jim"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt7dc"]
-radius = 1.19284
-height = 10.338
+radius = 3.0
+height = 26.0
 
 [node name="Arrow" type="Area2D"]
 script = ExtResource("1_dhecg")
@@ -17,7 +17,6 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-scale = Vector2(2.515, 2.515)
 shape = SubResource("CapsuleShape2D_nt7dc")
 metadata/_edit_lock_ = true
 
