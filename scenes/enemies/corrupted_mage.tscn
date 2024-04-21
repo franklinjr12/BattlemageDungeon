@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dji3lqcd3jtlq"]
+
+[ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_rvgpy"]
+[ext_resource type="Shader" path="res://assets/shaders/white_mix.gdshader" id="2_camt8"]
+[ext_resource type="Texture2D" uid="uid://dtls7ubofgvro" path="res://assets/enemies_sprites/corrupted_mage.png" id="3_j0jj6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pleb2"]
+resource_local_to_scene = true
+shader = ExtResource("2_camt8")
+shader_parameter/flash_modifier = 0.6
+
+[node name="CorruptedMage" instance=ExtResource("1_rvgpy")]
+position = Vector2(0, -30)
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_pleb2")
+texture = ExtResource("3_j0jj6")
+
+[node name="HealthBar" parent="." index="2"]
+offset_top = -47.0
+offset_bottom = -33.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerDetectionShape" parent="PlayerDetectionArea" index="0"]
+position = Vector2(0, -15)
+
+[node name="CharacterAttributes" parent="." index="6"]
+health = 30
+damage = 1
+speed = 20.0
+drop_experience = 20

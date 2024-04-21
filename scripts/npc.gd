@@ -130,7 +130,7 @@ func get_x_size() -> float:
 		if $CollisionShape2D.rotation != 0:
 			return shape.height * 1.3
 		else:
-			return shape.radius * 1.3
+			return shape.radius * 2.1
 	return 1
 
 func change_state(state : NpcState):

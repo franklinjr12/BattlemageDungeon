@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtq1mn4wshpnh"]
+
+[ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_44utg"]
+[ext_resource type="Shader" path="res://assets/shaders/white_mix.gdshader" id="2_8t8j6"]
+[ext_resource type="Texture2D" uid="uid://dqpj7c6np4fyp" path="res://assets/enemies_sprites/skeleton.png" id="3_ydvhv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6v4e6"]
+resource_local_to_scene = true
+shader = ExtResource("2_8t8j6")
+shader_parameter/flash_modifier = 0.6
+
+[node name="Skeleton" instance=ExtResource("1_44utg")]
+position = Vector2(0, -26)
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_6v4e6")
+position = Vector2(2, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_ydvhv")
+
+[node name="HealthBar" parent="." index="2"]
+offset_top = -56.0
+offset_bottom = -42.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerDetectionArea" parent="." index="3"]
+position = Vector2(0, 6)
+
+[node name="CharacterAttributes" parent="." index="6"]
+health = 40

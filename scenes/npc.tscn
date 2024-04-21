@@ -12,8 +12,8 @@ shader = ExtResource("2_tivh8")
 shader_parameter/flash_modifier = 0.6
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjv7n"]
-radius = 9.0
-height = 36.0
+radius = 14.0
+height = 48.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqdss"]
 size = Vector2(500, 100)
@@ -65,6 +65,8 @@ drop_experience = 10
 [node name="SpriteFlashTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Spells" type="Node" parent="."]
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
