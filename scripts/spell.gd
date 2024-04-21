@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Spell
 
+signal destroyed
+
 @export var dissapear_on_impact : bool = true
 @export var lifetime : float = 0
 @export var rotate_on_cast : bool = true
@@ -36,6 +38,7 @@ func _on_body_entered(body):
 		var animation = spell_impact.instantiate()
 		animation.position = position
 		get_parent().add_child(animation)
+		destroyed.emit(position)
 		queue_free()
 
 func set_direction(dir : Vector2):
@@ -59,4 +62,5 @@ func get_size() -> float:
 	return 1
 
 func _on_lifetime_timer_timeout():
+	destroyed.emit()
 	queue_free()

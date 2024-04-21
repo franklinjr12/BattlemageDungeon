@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7ws2dxw0l3xf"]
+[gd_scene load_steps=9 format=3 uid="uid://c7ws2dxw0l3xf"]
 
 [ext_resource type="Script" path="res://scripts/spell.gd" id="1_stl6y"]
 [ext_resource type="Texture2D" uid="uid://cmyqw5k3mtte4" path="res://assets/attacks_sprites/fireball.png" id="2_8kols"]
 [ext_resource type="PackedScene" uid="uid://bo3nmm1jdr4ci" path="res://scenes/spells/spell_attributes.tscn" id="3_giu1o"]
+[ext_resource type="Script" path="res://scripts/spells/fireball.gd" id="4_7yacc"]
 [ext_resource type="Texture2D" uid="uid://wj37sep0qgaw" path="res://assets/effects/floaty_32.png" id="4_48uk4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b6apy"]
@@ -42,6 +43,7 @@ speed = 100.0
 cooldown = 2.0
 
 [node name="CustomBehavior" type="Node" parent="."]
+script = ExtResource("4_7yacc")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_71p25")
