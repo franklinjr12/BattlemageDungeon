@@ -8,7 +8,7 @@
 radius = 3.0
 height = 50.0
 
-[node name="Spell" instance=ExtResource("1_nh88e")]
+[node name="LightMirror" instance=ExtResource("1_nh88e")]
 dissapear_on_impact = false
 lifetime = 3.0
 rotate_on_cast = false
@@ -26,3 +26,5 @@ cooldown = 2.0
 
 [node name="CustomBehavior" parent="." index="4"]
 script = ExtResource("3_tyrik")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

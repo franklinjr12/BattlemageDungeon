@@ -11,11 +11,12 @@ shader = ExtResource("2_camt8")
 shader_parameter/flash_modifier = 0.6
 
 [node name="CorruptedMage" instance=ExtResource("1_rvgpy")]
-position = Vector2(0, -30)
+position = Vector2(0, -23)
 has_spells = true
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_pleb2")
+scale = Vector2(0.77, 0.77)
 texture = ExtResource("3_j0jj6")
 
 [node name="HealthBar" parent="." index="2"]
@@ -29,7 +30,7 @@ position = Vector2(0, -15)
 [node name="CharacterAttributes" parent="." index="6"]
 health = 30
 damage = 1
-speed = 20.0
+speed = 80.0
 drop_experience = 20
 
 [node name="Spells" parent="." index="8"]

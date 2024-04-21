@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsik45qyc3vf2"]
+[gd_scene load_steps=6 format=3 uid="uid://dsik45qyc3vf2"]
 
 [ext_resource type="PackedScene" uid="uid://c8ddsp1rokso7" path="res://scenes/npc.tscn" id="1_uite6"]
+[ext_resource type="Shader" path="res://assets/shaders/white_mix.gdshader" id="2_0oor6"]
 [ext_resource type="Texture2D" uid="uid://24xpqfbmeup2" path="res://assets/enemies_sprites/bear.png" id="2_h1rrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejy04"]
+resource_local_to_scene = true
+shader = ExtResource("2_0oor6")
+shader_parameter/flash_modifier = 0.6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2b042"]
 size = Vector2(21.4173, 21.6535)
 
 [node name="Bear" instance=ExtResource("1_uite6")]
+position = Vector2(0, -39)
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_ejy04")
 texture = ExtResource("2_h1rrg")
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -22,9 +30,9 @@ offset_bottom = -43.0
 
 [node name="PlayerDetectionArea" parent="." index="3"]
 visible = true
+position = Vector2(0, 20)
 
 [node name="CharacterAttributes" parent="." index="6"]
 health = 200
 damage = 30
-speed = 50.0
 drop_experience = 30

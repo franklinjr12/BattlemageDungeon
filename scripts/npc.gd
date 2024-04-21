@@ -96,7 +96,7 @@ func handle_chasing(_delta):
 		if is_player_in_attack_range():
 			velocity.x -= direction_chasing.normalized().x * SPEED
 			change_state(NpcState.ATTACKING)
-			print("changing state to attacking")
+#			print("changing state to attacking")
 
 func is_player_in_attack_range():
 	if has_spells:
@@ -108,7 +108,7 @@ func is_player_in_attack_range():
 func handle_attacking(_delta):
 	if not is_player_in_attack_range():
 		change_state(NpcState.CHASING)
-		print("changing state to chasing")
+#		print("changing state to chasing")
 	else:
 		if can_attack and !attack_on_cooldown:
 			attack_on_cooldown = true

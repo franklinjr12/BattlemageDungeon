@@ -28,6 +28,7 @@ func _on_body_entered(body):
 	if body == who_casted:
 		return
 	if $CustomBehavior.get_script() != null and $CustomBehavior.has_method("on_body_entered"):
+		print("calling custom behavior on_body_entered")
 		$CustomBehavior.on_body_entered(body)
 	else:
 		if body is StaticBody2D:
@@ -64,3 +65,8 @@ func get_size() -> float:
 func _on_lifetime_timer_timeout():
 	destroyed.emit()
 	queue_free()
+
+
+func _on_area_entered(area):
+	if $CustomBehavior.get_script() != null and $CustomBehavior.has_method("on_area_entered"):
+		$CustomBehavior.on_area_entered(area)

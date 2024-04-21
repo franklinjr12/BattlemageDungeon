@@ -28,4 +28,4 @@ offset_bottom = -43.0
 [node name="CharacterAttributes" parent="." index="6"]
 health = 50
 damage = 15
-speed = 50.0
+speed = 150.0

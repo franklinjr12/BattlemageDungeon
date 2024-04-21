@@ -11,7 +11,8 @@ script = ExtResource("1_p2bi8")
 position = Vector2(529, 453)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.355, 1.355)
+zoom = Vector2(2, 2)
 
 [node name="PlayerCombatUI" parent="Player/Camera2D" instance=ExtResource("3_tul28")]
-position = Vector2(-413, 185)
+position = Vector2(-282, 128)
+scale = Vector2(0.745, 0.745)
