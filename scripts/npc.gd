@@ -2,11 +2,14 @@ extends CharacterBody2D
 
 signal enemy_died
 
-@onready var SPEED = $CharacterAttributes.speed
 const JUMP_VELOCITY = -400.0
+enum NpcState {IDLE, CHASING, ATTACKING}
+
+@export var has_spells : bool = false
+
+@onready var SPEED = $CharacterAttributes.speed
 @onready var drop_experience = $CharacterAttributes.drop_experience
 
-enum NpcState {IDLE, CHASING, ATTACKING}
 
 var current_state = NpcState.IDLE
 var attack_range = 40
@@ -64,9 +67,14 @@ func suffer_damage(damage):
 
 func _on_player_detection_area_body_entered(body):
 	# since it should detect only the player as it has its on layer no need to cast ?
-	if body is CharacterBody2D:
+	if body is Player:
 		change_state(NpcState.CHASING)
 		print("changing state to chasing on body entered")
+
+func _on_player_detection_area_body_exited(body):
+	if body is Player:
+		change_state(NpcState.IDLE)
+		print("changing state to idle on body exited")
 
 func _on_timer_timeout():
 	can_attack = true
@@ -85,39 +93,66 @@ func handle_chasing(_delta):
 		else:
 			$Sprite2D.flip_h = false
 		velocity.x = direction_chasing.normalized().x * SPEED
-		if (player_reference.position - position).length() <= attack_range:
+		if is_player_in_attack_range():
 			velocity.x -= direction_chasing.normalized().x * SPEED
 			change_state(NpcState.ATTACKING)
 			print("changing state to attacking")
 
+func is_player_in_attack_range():
+	if has_spells:
+		var l = (player_reference.position - position).length()
+		return l < get_x_size() * 7
+	else:
+		return (player_reference.position - position).length() <= attack_range
+
 func handle_attacking(_delta):
-	if (player_reference.position - position).length() > attack_range:
+	if not is_player_in_attack_range():
 		change_state(NpcState.CHASING)
 		print("changing state to chasing")
 	else:
 		if can_attack and !attack_on_cooldown:
 			attack_on_cooldown = true
-			$AttackCooldown.start()
-			var running_scene = get_parent()
-			var new_attack = attack.instantiate()
-			new_attack.damage = $CharacterAttributes.damage
-			var shape = $CollisionShape2D.shape
-			var npc_shape_offset = 0
-			if shape is CapsuleShape2D:
-				npc_shape_offset = shape.radius
-			elif shape is RectangleShape2D:
-				npc_shape_offset = shape.size.x
-			var offset_x = 0
-			var attack_shape_offset = new_attack.get_node("CollisionShape2D").shape.radius
-			if player_reference.position.x > position.x:
-				offset_x += attack_shape_offset * 1.5 + 1.5 * npc_shape_offset
+			if has_spells:
+				attack_with_spells()
 			else:
-				offset_x += -attack_shape_offset * 1.5 - 1.5 * npc_shape_offset
-				new_attack.get_node("Sprite2D").flip_h = true
-			var v = position
-			v.x += offset_x
-			new_attack.position = v
-			running_scene.add_child(new_attack)
+				attack_melee()
+
+func attack_with_spells() -> void:
+	var dir : Vector2 = player_reference.position - position
+	dir = dir.normalized()
+	var offset_position : Vector2 = position
+	var character_body_offset = get_x_size()
+	if dir.x > 0:
+		offset_position.x += get_x_size()
+	else:
+		offset_position.x -= get_x_size()
+	offset_position.y -= 10
+	var casted_cd : float = $Spells.cast(offset_position, dir)
+	$AttackCooldown.wait_time = casted_cd
+	$AttackCooldown.start()
+
+func attack_melee() -> void:
+	$AttackCooldown.start()
+	var running_scene = get_parent()
+	var new_attack = attack.instantiate()
+	new_attack.damage = $CharacterAttributes.damage
+	var shape = $CollisionShape2D.shape
+	var npc_shape_offset = 0
+	if shape is CapsuleShape2D:
+		npc_shape_offset = shape.radius
+	elif shape is RectangleShape2D:
+		npc_shape_offset = shape.size.x
+	var offset_x = 0
+	var attack_shape_offset = new_attack.get_node("CollisionShape2D").shape.radius
+	if player_reference.position.x > position.x:
+		offset_x += attack_shape_offset * 1.5 + 1.5 * npc_shape_offset
+	else:
+		offset_x += -attack_shape_offset * 1.5 - 1.5 * npc_shape_offset
+		new_attack.get_node("Sprite2D").flip_h = true
+	var v = position
+	v.x += offset_x
+	new_attack.position = v
+	running_scene.add_child(new_attack)
 
 func get_x_size() -> float:
 	var shape = $CollisionShape2D.shape
@@ -139,3 +174,4 @@ func change_state(state : NpcState):
 
 func _on_sprite_flash_timer_timeout():
 	$Sprite2D.material.set_shader_parameter("flash_modifier", 0)
+
