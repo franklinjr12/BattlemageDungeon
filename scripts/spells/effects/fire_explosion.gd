@@ -1,6 +1,6 @@
 extends Node2D
 
-const DAMAGE : int = 60
+const DAMAGE : int = 30
 
 func _ready():
 	$AnimatedSprite2D.play('default')

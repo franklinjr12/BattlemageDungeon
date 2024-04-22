@@ -32,14 +32,14 @@ func change_to_game_over():
 func load_enemies_on_level():
 	const enemies_folder = "res://scenes/enemies/"
 	# TODO need to find a better way for doing this
-#	enemies_list.append(load(enemies_folder + "rat.tscn"))
-#	enemies_list.append(load(enemies_folder + "bear.tscn"))
-#	enemies_list.append(load(enemies_folder + "creature1.tscn"))
-#	enemies_list.append(load(enemies_folder + "skeleton.tscn"))
+	enemies_list.append(load(enemies_folder + "rat.tscn"))
+	enemies_list.append(load(enemies_folder + "bear.tscn"))
+	enemies_list.append(load(enemies_folder + "creature1.tscn"))
+	enemies_list.append(load(enemies_folder + "skeleton.tscn"))
 	enemies_list.append(load(enemies_folder + "corrupted_mage.tscn"))
 	var arr_size = enemies_list.size()
 	var enemies_spawn_area = get_tree().get_nodes_in_group("enemy_spawn")
-	var num_enemies_to_spawn = randi_range(3,5)
+	var num_enemies_to_spawn = randi_range(4,6)
 	for i in num_enemies_to_spawn:
 		var enemy_inst = enemies_list[randi_range(0,arr_size-1)].instantiate()
 		var random_area = enemies_spawn_area.pick_random()

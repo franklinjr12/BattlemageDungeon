@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7x8gxhwh3xbb"]
+[gd_scene load_steps=15 format=3 uid="uid://b7x8gxhwh3xbb"]
 
 [ext_resource type="Texture2D" uid="uid://cluoboy5nkykg" path="res://assets/effects/explosion.png" id="1_rjqi0"]
 [ext_resource type="Script" path="res://scripts/spells/effects/fire_explosion.gd" id="1_rkpbt"]
+[ext_resource type="AudioStream" uid="uid://v0dtr2c5sx8p" path="res://audio/effects/hq-explosion-660ms.mp3" id="3_dubok"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubfhv"]
 atlas = ExtResource("1_rjqi0")
@@ -88,6 +89,10 @@ frame_progress = 0.635638
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_xt6qh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dubok")
+autoplay = true
 
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

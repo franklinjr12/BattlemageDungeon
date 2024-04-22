@@ -1,17 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://byvlnxbr1jq87"]
+[gd_scene load_steps=8 format=3 uid="uid://byvlnxbr1jq87"]
 
 [ext_resource type="Script" path="res://scripts/spell.gd" id="1_ao5u7"]
 [ext_resource type="Texture2D" uid="uid://dksq4l76xstjh" path="res://assets/attacks_sprites/bolt_spell.png" id="2_feoxb"]
 [ext_resource type="PackedScene" uid="uid://bo3nmm1jdr4ci" path="res://scenes/spells/spell_attributes.tscn" id="3_l55v0"]
+[ext_resource type="Texture2D" uid="uid://cge0lcxs6xmvx" path="res://assets/effects/spark_effect.png" id="4_silfy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt7dc"]
-radius = 2.0
-height = 10.0
+radius = 7.0
+height = 28.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vsyen"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8k14p"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [node name="Bolt" type="Area2D"]
 script = ExtResource("1_ao5u7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
 texture = ExtResource("2_feoxb")
 metadata/_edit_lock_ = true
 
@@ -26,5 +46,11 @@ speed = 400.0
 cooldown = 0.3
 
 [node name="CustomBehavior" type="Node" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vsyen")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_8k14p")
+texture = ExtResource("4_silfy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

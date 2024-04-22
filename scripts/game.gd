@@ -47,7 +47,7 @@ func on_level_complete():
 
 func create_level() -> Node2D:
 	# select one of the levels randomly
-	var level_index = var_to_str(randi_range(1,4))
+	var level_index = var_to_str(randi_range(1,5))
 	var format_string = "res://scenes/levels/level_variant_%s.tscn"
 	var actual_string = format_string % [level_index]
 	print("chosen level ", actual_string)

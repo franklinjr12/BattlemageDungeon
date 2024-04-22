@@ -92,23 +92,27 @@ func handle_animation():
 		$JumpingSprite.visible = true
 		$FallingSprite.visible = false
 		$AnimatedSprite2D.visible = false
+		play_footsteps_sound(false)
 	elif velocity.y > 0:
 		$IdleSprite.visible = false
 		$JumpingSprite.visible = false
 		$FallingSprite.visible = true
 		$AnimatedSprite2D.visible = false
+		play_footsteps_sound(false)
 	elif velocity.x != 0:
 		$IdleSprite.visible = false
 		$JumpingSprite.visible = false
 		$FallingSprite.visible = false
 		$AnimatedSprite2D.visible = true
 		$AnimatedSprite2D.play("running")
+		play_footsteps_sound(true)
 	else:
 		$IdleSprite.visible = true
 		$JumpingSprite.visible = false
 		$FallingSprite.visible = false
 		$AnimatedSprite2D.visible = false
 		$AnimatedSprite2D.stop()
+		play_footsteps_sound(false)
 	if should_flip:
 		$AnimatedSprite2D.flip_h = true
 		$IdleSprite.flip_h = true
@@ -119,6 +123,13 @@ func handle_animation():
 		$IdleSprite.flip_h = false
 		$JumpingSprite.flip_h = false
 		$FallingSprite.flip_h = false
+
+func play_footsteps_sound(should_play : bool) -> void:
+	if should_play:
+		if not $FootStepsAudio.playing:
+			$FootStepsAudio.play()
+	else:
+		$FootStepsAudio.playing = false
 
 func check_inputs():
 	if Input.is_action_just_pressed("cast"):
