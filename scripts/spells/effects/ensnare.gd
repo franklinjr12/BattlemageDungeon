@@ -17,7 +17,8 @@ func _process(_delta):
 				fixed_position = parent.position
 			parent.position = fixed_position
 
-
-
 func _on_lifetime_timer_timeout():
+	var sprite = parent.get_node_or_null("EnsnareSprite")
+	if sprite:
+		sprite.queue_free()
 	queue_free()
