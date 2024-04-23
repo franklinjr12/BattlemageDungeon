@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dslniged6brs2"]
+
+[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="1_lrsbv"]
+[ext_resource type="Texture2D" uid="uid://dspca7yrq14uc" path="res://assets/level_up_scene/skill_tree_item_place_holder.png" id="2_hc37l"]
+[ext_resource type="Script" path="res://scripts/spells/light_chain.gd" id="2_y7q7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgncg"]
+size = Vector2(40, 4)
+
+[node name="LightChain" instance=ExtResource("1_lrsbv")]
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 2.0
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_hc37l")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_cgncg")
+
+[node name="SpellAttributes" parent="." index="3"]
+damage = 1
+
+[node name="CustomBehavior" parent="." index="5"]
+script = ExtResource("2_y7q7p")
