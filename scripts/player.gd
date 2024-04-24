@@ -32,8 +32,9 @@ var sprites = null
 #@onready var basic_projectile = preload("res://scenes/basic_projectile.tscn")
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
 
-var spell = preload("res://scenes/spells/light_chain.tscn")
-#var spell = preload("res://scenes/spells/light_orb.tscn")
+var spell = preload("res://scenes/spells/light_orb.tscn")
+#var spell = preload("res://scenes/spells/creeping_hands.tscn")
+#var spell = preload("res://scenes/spells/light_chain.tscn")
 #var spell = preload("res://scenes/spells/light_mirror.tscn")
 #var spell = preload("res://scenes/spells/corruption_could.tscn")
 #var spell = preload("res://scenes/spells/magic_missiles.tscn")
@@ -158,25 +159,33 @@ func cast_spell():
 	# if we are in the a valid game scene
 	var running_scene = get_parent()
 	if running_scene.name == "world" and selected_spell != null:
-		var new_projectile = selected_spell.instantiate()
-		print("casting ", new_projectile.name)
-		new_projectile.who_casted = self
+		var new_spell = selected_spell.instantiate()
+		new_spell.who_casted = self
 		var mpos = get_global_mouse_position()
 		var offset_position = position
-		var character_body_offset = $CollisionShape2D.shape.get_rect().size.x / 2
-		var projectile_body_offset = new_projectile.get_size() * spell_offset_value
-		var offset_x = character_body_offset + projectile_body_offset
-		if mpos.x > position.x:
-			offset_position.x += offset_x
+		if new_spell.x_offset_override != 0:
+			if mpos.x > position.x:
+				offset_position.x = new_spell.x_offset_override + position.x
+			else:
+				offset_position.x = -new_spell.x_offset_override + position.x
 		else:
-			offset_position.x -= offset_x
-		offset_position.y -= 10
+			var character_body_offset = $CollisionShape2D.shape.get_rect().size.x / 2
+			var projectile_body_offset = new_spell.get_size() * spell_offset_value
+			var offset_x = character_body_offset + projectile_body_offset
+			if mpos.x > position.x:
+				offset_position.x += offset_x
+			else:
+				offset_position.x -= offset_x
+		if new_spell.y_offset_override != 0:
+			offset_position.y = new_spell.y_offset_override + position.y
+		else:
+			offset_position.y -= 10
 		var dir = mpos - offset_position
 		dir = dir.normalized()
-		new_projectile.set_direction(dir)
-		new_projectile.position = offset_position
-		running_scene.add_child(new_projectile)
-		$SpellTimer.wait_time = new_projectile.cooldown
+		new_spell.set_direction(dir)
+		new_spell.position = offset_position
+		running_scene.add_child(new_spell)
+		$SpellTimer.wait_time = new_spell.cooldown
 		$SpellTimer.start()
 		is_spell_on_cooldown = true
 		spells_on_cooldown.emit()

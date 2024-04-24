@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/spells/corruption_cloud.gd" id="2_emsob"]
 [ext_resource type="Texture2D" uid="uid://ciq1ir1nlbpct" path="res://assets/attacks_sprites/corruption_cloud.png" id="2_v5oth"]
 
-[node name="Spell" instance=ExtResource("1_wvkmg")]
+[node name="CorruptionCloud" instance=ExtResource("1_wvkmg")]
 dissapear_on_impact = false
 lifetime = 3.0
 

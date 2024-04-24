@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1vl3j8o6suu7"]
+[gd_scene load_steps=14 format=3 uid="uid://b1vl3j8o6suu7"]
 
 [ext_resource type="Script" path="res://scripts/skill_tree.gd" id="1_02mej"]
 [ext_resource type="PackedScene" uid="uid://bcl3hcng1wdim" path="res://scenes/skill_tree_item.tscn" id="1_v7ow3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c0xfoon1yfqlw" path="res://scenes/spells/magic_missiles.tscn" id="9_g7xrj"]
 [ext_resource type="PackedScene" uid="uid://gx0foyvkussc" path="res://scenes/spells/earth_spike.tscn" id="10_h33ow"]
 [ext_resource type="PackedScene" uid="uid://dwssdh23s0enw" path="res://scenes/spells/corruption_could.tscn" id="11_2nm5c"]
+[ext_resource type="PackedScene" uid="uid://dslniged6brs2" path="res://scenes/spells/light_chain.tscn" id="12_c4qjt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8j8q"]
 
@@ -44,6 +45,7 @@ text = "Light"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="Dark" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 176.0
 offset_top = 256.0
 offset_right = 216.0
@@ -52,6 +54,7 @@ text = "Dark"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="Nature" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 240.0
 offset_top = 256.0
 offset_right = 295.0
@@ -60,6 +63,7 @@ text = "Nature"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="Arcane" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 304.0
 offset_top = 256.0
 offset_right = 359.0
@@ -68,6 +72,7 @@ text = "Arcane"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="Num0" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 224.0
 offset_right = 112.0
@@ -76,25 +81,25 @@ text = "0"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="Num3" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 176.0
 offset_right = 112.0
 offset_bottom = 202.0
-text = "3"
+text = "1"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="Num7" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = 72.0
 offset_top = 128.0
 offset_right = 112.0
 offset_bottom = 154.0
-text = "7
-"
+text = "2"
 label_settings = SubResource("LabelSettings_c8j8q")
 
 [node name="LightOrb" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(328, 232)
-light_attribute_required = 1
 spell = ExtResource("3_ocni3")
 
 [node name="TextureRect" parent="LightOrb" index="0"]
@@ -110,7 +115,6 @@ texture = ExtResource("2_i77t4")
 
 [node name="Fireball" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(264, 232)
-light_attribute_required = 1
 spell = ExtResource("5_s6b1e")
 
 [node name="TextureRect" parent="Fireball" index="0"]
@@ -118,7 +122,6 @@ texture = ExtResource("2_i77t4")
 
 [node name="Arrow" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(200, 232)
-light_attribute_required = 1
 spell = ExtResource("6_oaw6e")
 
 [node name="TextureRect" parent="Arrow" index="0"]
@@ -126,7 +129,6 @@ texture = ExtResource("2_i77t4")
 
 [node name="Bolt" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(136, 232)
-light_attribute_required = 1
 spell = ExtResource("7_k2pno")
 
 [node name="TextureRect" parent="Bolt" index="0"]
@@ -134,7 +136,7 @@ texture = ExtResource("2_i77t4")
 
 [node name="MagicMissiles" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(328, 184)
-light_attribute_required = 1
+arcane_attribute_required = 1
 spell = ExtResource("9_g7xrj")
 
 [node name="TextureRect" parent="MagicMissiles" index="0"]
@@ -142,7 +144,7 @@ texture = ExtResource("2_i77t4")
 
 [node name="EarthSpike" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(264, 184)
-light_attribute_required = 1
+nature_attribute_required = 1
 spell = ExtResource("10_h33ow")
 
 [node name="TextureRect" parent="EarthSpike" index="0"]
@@ -150,10 +152,18 @@ texture = ExtResource("2_i77t4")
 
 [node name="CorruptionCloud" parent="." instance=ExtResource("1_v7ow3")]
 position = Vector2(200, 184)
-light_attribute_required = 1
+dark_attribute_required = 1
 spell = ExtResource("11_2nm5c")
 
 [node name="TextureRect" parent="CorruptionCloud" index="0"]
+texture = ExtResource("2_i77t4")
+
+[node name="LightChain" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(136, 136)
+light_attribute_required = 2
+spell = ExtResource("12_c4qjt")
+
+[node name="TextureRect" parent="LightChain" index="0"]
 texture = ExtResource("2_i77t4")
 
 [editable path="LightOrb"]
@@ -164,3 +174,4 @@ texture = ExtResource("2_i77t4")
 [editable path="MagicMissiles"]
 [editable path="EarthSpike"]
 [editable path="CorruptionCloud"]
+[editable path="LightChain"]

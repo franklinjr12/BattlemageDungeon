@@ -7,6 +7,8 @@ signal destroyed
 @export var dissapear_on_impact : bool = true
 @export var lifetime : float = 0
 @export var rotate_on_cast : bool = true
+@export var x_offset_override : int = 0
+@export var y_offset_override : int = 0
 
 var spell_impact = preload("res://scenes/spells/spell_impact.tscn")
 
@@ -28,7 +30,6 @@ func _on_body_entered(body):
 	if body == who_casted:
 		return
 	if $CustomBehavior.get_script() != null and $CustomBehavior.has_method("on_body_entered"):
-		print("calling custom behavior on_body_entered")
 		$CustomBehavior.on_body_entered(body)
 	else:
 		if body is StaticBody2D:

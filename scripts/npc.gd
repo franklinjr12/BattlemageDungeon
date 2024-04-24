@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name NPC
+
 signal enemy_died
 
 const JUMP_VELOCITY = -400.0
@@ -9,7 +11,6 @@ enum NpcState {IDLE, CHASING, ATTACKING}
 
 @onready var SPEED = $CharacterAttributes.speed
 @onready var drop_experience = $CharacterAttributes.drop_experience
-
 
 var current_state = NpcState.IDLE
 var attack_range = 40
