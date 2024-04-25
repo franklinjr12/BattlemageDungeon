@@ -29,7 +29,8 @@ func _process(delta):
 func _on_body_entered(body):
 	if body == who_casted:
 		return
-	if $CustomBehavior.get_script() != null and $CustomBehavior.has_method("on_body_entered"):
+#	if $CustomBehavior.get_script() != null and $CustomBehavior.has_method("on_body_entered"):
+	if $CustomBehavior.has_method("on_body_entered"):
 		$CustomBehavior.on_body_entered(body)
 	else:
 		if body is StaticBody2D:

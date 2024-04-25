@@ -131,3 +131,18 @@ func _on_earth_spike_button_pressed():
 func _on_corruption_cloud_button_pressed():
 	var spell = get_node("SkillTree/CorruptionCloud").spell
 	assing_spell_to_current_slot(spell)
+
+
+func _on_light_chain_button_pressed():
+	var spell = get_node("SkillTree/LightChain").spell
+	assing_spell_to_current_slot(spell)
+
+
+func _on_creeping_hands_button_pressed():
+	var spell = get_node("SkillTree/CreepingHands").spell
+	assing_spell_to_current_slot(spell)
+
+
+func _on_shock_wave_button_pressed():
+	var spell = get_node("SkillTree/ShockWave").spell
+	assing_spell_to_current_slot(spell)

@@ -33,6 +33,7 @@ var sprites = null
 @onready var basic_projectile = preload("res://scenes/spells/fireball.tscn")
 
 var spell = preload("res://scenes/spells/light_orb.tscn")
+#var spell = preload("res://scenes/spells/shock_wave.tscn")
 #var spell = preload("res://scenes/spells/creeping_hands.tscn")
 #var spell = preload("res://scenes/spells/light_chain.tscn")
 #var spell = preload("res://scenes/spells/light_mirror.tscn")
