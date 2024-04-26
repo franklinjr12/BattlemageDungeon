@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbag1f0hu7rwq"]
+
+[ext_resource type="PackedScene" uid="uid://chviqrveylas3" path="res://scenes/spells/spell.tscn" id="1_gfyd6"]
+[ext_resource type="Texture2D" uid="uid://b4dsstngoy87j" path="res://assets/attacks_sprites/ice_spike.png" id="2_n38cg"]
+[ext_resource type="Script" path="res://scripts/spells/ice_spike.gd" id="3_1jl0a"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_t7ydf"]
+points = PackedVector2Array(-50, 0, 50, -75, 50, 0)
+
+[node name="IceSpike" instance=ExtResource("1_gfyd6")]
+position = Vector2(0, -36)
+dissapear_on_impact = false
+lifetime = 3.0
+rotate_on_cast = false
+x_offset_override = 50
+y_offset_override = -20
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_n38cg")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, 37)
+shape = SubResource("ConvexPolygonShape2D_t7ydf")
+
+[node name="SpellAttributes" parent="." index="2"]
+damage = 100
+speed = 0.0
+cooldown = 2.0
+
+[node name="CustomBehavior" parent="." index="4"]
+script = ExtResource("3_1jl0a")
+
+[node name="AudioStreamPlayer2D" parent="." index="5"]
+position = Vector2(7, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-2, 37)
+shape = SubResource("ConvexPolygonShape2D_t7ydf")
+metadata/_edit_lock_ = true

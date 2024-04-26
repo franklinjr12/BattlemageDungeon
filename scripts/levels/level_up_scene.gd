@@ -146,3 +146,8 @@ func _on_creeping_hands_button_pressed():
 func _on_shock_wave_button_pressed():
 	var spell = get_node("SkillTree/ShockWave").spell
 	assing_spell_to_current_slot(spell)
+
+
+func _on_ice_spike_button_pressed():
+	var spell = get_node("SkillTree/IceSpike").spell
+	assing_spell_to_current_slot(spell)

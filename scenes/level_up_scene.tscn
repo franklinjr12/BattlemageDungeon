@@ -219,6 +219,7 @@ texture = ExtResource("5_6rbxq")
 [connection signal="pressed" from="SkillTree/LightChain/Button" to="." method="_on_light_chain_button_pressed"]
 [connection signal="pressed" from="SkillTree/CreepingHands/Button" to="." method="_on_creeping_hands_button_pressed"]
 [connection signal="pressed" from="SkillTree/ShockWave/Button" to="." method="_on_shock_wave_button_pressed"]
+[connection signal="pressed" from="SkillTree/IceSpike/Button" to="." method="_on_ice_spike_button_pressed"]
 
 [editable path="SkillTree"]
 [editable path="SkillTree/LightOrb"]
@@ -232,3 +233,4 @@ texture = ExtResource("5_6rbxq")
 [editable path="SkillTree/LightChain"]
 [editable path="SkillTree/CreepingHands"]
 [editable path="SkillTree/ShockWave"]
+[editable path="SkillTree/IceSpike"]

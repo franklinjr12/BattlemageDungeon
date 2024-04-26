@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1vl3j8o6suu7"]
+[gd_scene load_steps=17 format=3 uid="uid://b1vl3j8o6suu7"]
 
 [ext_resource type="Script" path="res://scripts/skill_tree.gd" id="1_02mej"]
 [ext_resource type="PackedScene" uid="uid://bcl3hcng1wdim" path="res://scenes/skill_tree_item.tscn" id="1_v7ow3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dslniged6brs2" path="res://scenes/spells/light_chain.tscn" id="12_c4qjt"]
 [ext_resource type="PackedScene" uid="uid://uvjgu7u1op4" path="res://scenes/spells/creeping_hands.tscn" id="13_cryg0"]
 [ext_resource type="PackedScene" uid="uid://wyxlu5xs6mp8" path="res://scenes/spells/shock_wave.tscn" id="14_arwu6"]
+[ext_resource type="PackedScene" uid="uid://bbag1f0hu7rwq" path="res://scenes/spells/ice_spike.tscn" id="15_acuj5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8j8q"]
 
@@ -184,6 +185,14 @@ spell = ExtResource("14_arwu6")
 [node name="TextureRect" parent="ShockWave" index="0"]
 texture = ExtResource("2_i77t4")
 
+[node name="IceSpike" parent="." instance=ExtResource("1_v7ow3")]
+position = Vector2(264, 136)
+nature_attribute_required = 2
+spell = ExtResource("15_acuj5")
+
+[node name="TextureRect" parent="IceSpike" index="0"]
+texture = ExtResource("2_i77t4")
+
 [editable path="LightOrb"]
 [editable path="LightMirror"]
 [editable path="Fireball"]
@@ -195,3 +204,4 @@ texture = ExtResource("2_i77t4")
 [editable path="LightChain"]
 [editable path="CreepingHands"]
 [editable path="ShockWave"]
+[editable path="IceSpike"]
