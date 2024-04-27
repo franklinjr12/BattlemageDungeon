@@ -19,7 +19,8 @@ var direction_chasing = Vector2.ZERO
 var attack_cooldown = 0.5
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var attack = preload("res://scenes/melee_attack.tscn")
-var damage_number = preload("res://scenes/damage_number.tscn")
+@onready var damage_number = preload("res://scenes/damage_number.tscn")
+@onready var experience_orb = preload("res://scenes/experience_orb.tscn")
 
 var can_attack = false
 var attack_on_cooldown = false
@@ -51,8 +52,13 @@ func died():
 	queue_free()
 
 func give_exp():
-	var player = get_parent().get_node("Player")
-	player.gain_experience(drop_experience)
+#	var player = get_parent().get_node("Player")
+#	player.gain_experience(drop_experience)
+	var experience_orb_inst = experience_orb.instantiate()
+	experience_orb_inst.position = position
+	experience_orb_inst.set_dropped_experience(drop_experience)
+	get_parent().call_deferred("add_child", experience_orb_inst)
+	
 
 func suffer_damage(damage):
 	$HealthBar.value -= damage
