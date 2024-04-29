@@ -35,6 +35,7 @@ func on_level_complete():
 		new_level = create_levelup()
 		new_level.name = LEVEL_UP_SCENE_NAME
 	else:
+		get_node("Statistics").increment_current_levels()
 		completed_levels += 1
 		new_level = create_level()
 		var player_spawn_position = new_level.get_node("PlayerSpawnArea").position

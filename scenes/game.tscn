@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ghounb6os5im"]
+[gd_scene load_steps=5 format=3 uid="uid://ghounb6os5im"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_p2bi8"]
 [ext_resource type="PackedScene" uid="uid://cbfl32aq4ax1p" path="res://scenes/player.tscn" id="2_oqm0p"]
 [ext_resource type="PackedScene" uid="uid://dliyla2p58k7y" path="res://scenes/ui/PlayerCombatUI.tscn" id="3_tul28"]
+[ext_resource type="Script" path="res://scripts/statistics.gd" id="4_1ud5p"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_p2bi8")
@@ -16,3 +17,6 @@ zoom = Vector2(2, 2)
 [node name="PlayerCombatUI" parent="Player/Camera2D" instance=ExtResource("3_tul28")]
 position = Vector2(-282, 128)
 scale = Vector2(0.745, 0.745)
+
+[node name="Statistics" type="Node" parent="."]
+script = ExtResource("4_1ud5p")

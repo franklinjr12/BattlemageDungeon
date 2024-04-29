@@ -11,6 +11,7 @@ signal player_died
 signal leveled_up
 signal spells_on_cooldown
 signal spells_off_cooldown
+signal player_gained_experience(value : int)
 
 const PLAYER_JUMP_TIMEOUT_SECONDS = 0.3
 const INITIAL_HP = 100
@@ -194,6 +195,7 @@ func cast_spell():
 
 func gain_experience(experience):
 	current_exp += experience
+	player_gained_experience.emit(experience)
 	if current_exp >= next_level * LEVEL_UP_THRESHOLD:
 		next_level += 1
 		current_level += 1
