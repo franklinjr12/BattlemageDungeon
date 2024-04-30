@@ -76,12 +76,12 @@ func _on_player_detection_area_body_entered(body):
 	# since it should detect only the player as it has its on layer no need to cast ?
 	if body is Player:
 		change_state(NpcState.CHASING)
-		print("changing state to chasing on body entered")
+#		print("changing state to chasing on body entered")
 
 func _on_player_detection_area_body_exited(body):
 	if body is Player:
 		change_state(NpcState.IDLE)
-		print("changing state to idle on body exited")
+#		print("changing state to idle on body exited")
 
 func _on_timer_timeout():
 	can_attack = true

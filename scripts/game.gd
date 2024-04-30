@@ -7,6 +7,7 @@ const LEVELS_TO_LEVEL_UP_SCENE = 3
 var player_reference = null
 var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
 var completed_levels = 1
+var statistics : Statistics = null
 
 func _ready():
 	set_player_reference()
@@ -18,12 +19,17 @@ func _ready():
 	var player_spawn_position = level.get_node("PlayerSpawnArea").position
 	player_reference.position = player_spawn_position
 	add_child(level)
+	$CombatLevelTimer.start()
 	connect_to_level_complete(DEFAULT_LEVEL_NAME)
+	statistics = get_node("Statistics")
+	statistics.connect_to_enemies_died_signal()
 
 func set_player_reference():
 	player_reference = $Player
 
 func on_level_complete():
+	statistics.clear_current_combat_levels_time()
+	$CombatLevelTimer.stop()
 	var current_level = get_node_or_null(DEFAULT_LEVEL_NAME)
 	if current_level == null:
 		current_level = get_node_or_null(LEVEL_UP_SCENE_NAME)
@@ -42,9 +48,11 @@ func on_level_complete():
 		player_reference.position = player_spawn_position
 		new_level.name = DEFAULT_LEVEL_NAME
 		new_level.set_script(scene_combat_script)
+		$CombatLevelTimer.start()
 	new_level.add_child(player_reference)
 	call_deferred("add_child", new_level)
 	call_deferred("connect_to_level_complete", new_level.name)
+	get_node("Statistics").call_deferred("connect_to_enemies_died_signal")
 
 func create_level() -> Node2D:
 	# select one of the levels randomly
@@ -82,3 +90,7 @@ func assign_random_spell_to_player():
 	s = spells[randi_range(0,3)]
 	player_reference.spell_4 = s
 	ps.assign_new_spell_to_slot(s.instantiate(), 4)
+
+func _on_combat_level_timer_timeout():
+	statistics.increment_current_combat_levels_time()
+	statistics.increment_total_combat_levels_time()

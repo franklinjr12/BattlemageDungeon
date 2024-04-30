@@ -46,10 +46,6 @@ func load_enemies_on_level():
 		enemies_spawn_area.erase(random_area)
 		enemy_inst.position = random_area.position
 		add_child(enemy_inst)
-#	for area in enemies_spawn_area:
-#		var enemy_inst = enemies_list[randi_range(0,arr_size-1)].instantiate()
-#		enemy_inst.position = area.position
-#		add_child(enemy_inst)
 
 func allow_exit_room() -> void:
 	var level_complete_label_node = get_node_or_null("LevelCompleteLabel")

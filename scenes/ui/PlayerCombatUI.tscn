@@ -12,6 +12,7 @@
 font_size = 24
 
 [node name="PlayerCombatUI" type="Node2D"]
+z_index = 2
 script = ExtResource("1_x4vxs")
 
 [node name="PlayerHealthDisplay" type="TextureProgressBar" parent="."]

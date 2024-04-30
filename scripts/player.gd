@@ -203,7 +203,7 @@ func gain_experience(experience):
 		$LevelUpAnimation.visible = true
 		$LevelUpAnimation.play()
 		leveled_up.emit()
-	print("current_exp ", current_exp, " current_level ", current_level, " level_up_points ", level_up_points)
+#	print("current_exp ", current_exp, " current_level ", current_level, " level_up_points ", level_up_points)
 	
 
 func suffer_damage(damage):

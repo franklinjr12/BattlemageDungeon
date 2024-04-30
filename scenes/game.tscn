@@ -20,3 +20,7 @@ scale = Vector2(0.745, 0.745)
 
 [node name="Statistics" type="Node" parent="."]
 script = ExtResource("4_1ud5p")
+
+[node name="CombatLevelTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CombatLevelTimer" to="." method="_on_combat_level_timer_timeout"]
