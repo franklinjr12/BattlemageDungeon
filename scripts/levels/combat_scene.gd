@@ -26,7 +26,7 @@ func on_enemy_died():
 
 func change_to_game_over():
 	var game_over_scene_inst = game_over_scene.instantiate()
-	get_tree().root.add_child(game_over_scene_inst)
+	get_tree().root.get_node("Game").add_child(game_over_scene_inst)
 	queue_free()
 
 func load_enemies_on_level():
