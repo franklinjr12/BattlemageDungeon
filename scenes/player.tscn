@@ -103,7 +103,7 @@ shape = SubResource("CapsuleShape2D_u1yuv")
 character_type = 1
 health = 100
 damage = 1
-speed = 100.0
+speed = 6000.0
 
 [node name="CharacterMagicalAttributes" parent="." instance=ExtResource("4_fa3dn")]
 

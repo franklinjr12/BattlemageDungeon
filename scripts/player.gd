@@ -62,6 +62,7 @@ func _ready():
 	$JumpTimer.one_shot = true
 	$JumpTimer.wait_time = PLAYER_JUMP_TIMEOUT_SECONDS
 	sprites = [$IdleSprite, $AnimatedSprite2D, $FallingSprite, $JumpingSprite]
+	player_speed = $CharacterAttributes.speed
 
 func _process(_delta):
 	check_inputs()

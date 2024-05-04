@@ -33,6 +33,5 @@ visible = true
 position = Vector2(0, 20)
 
 [node name="CharacterAttributes" parent="." index="6"]
-health = 200
-damage = 30
+damage = 15
 drop_experience = 30

@@ -28,7 +28,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(0, -15)
 
 [node name="CharacterAttributes" parent="." index="6"]
-health = 30
+health = 15
 damage = 1
 speed = 80.0
 drop_experience = 20

@@ -81,7 +81,7 @@ size_flags_horizontal = 4
 
 [node name="CombatTime" type="Label" parent="Control/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-text = "Enemies killed "
+text = "Combat time"
 
 [node name="CombatTimeValue" type="Label" parent="Control/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
