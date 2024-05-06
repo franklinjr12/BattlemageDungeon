@@ -106,6 +106,10 @@ damage = 1
 speed = 6000.0
 
 [node name="CharacterMagicalAttributes" parent="." instance=ExtResource("4_fa3dn")]
+dark = 2
+light = 2
+nature = 2
+arcane = 2
 
 [node name="LevelUpAnimation" type="AnimatedSprite2D" parent="."]
 visible = false

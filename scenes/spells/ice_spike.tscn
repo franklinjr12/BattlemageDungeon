@@ -23,7 +23,7 @@ position = Vector2(-2, 37)
 shape = SubResource("ConvexPolygonShape2D_t7ydf")
 
 [node name="SpellAttributes" parent="." index="2"]
-damage = 100
+damage = 35
 speed = 0.0
 cooldown = 2.0
 

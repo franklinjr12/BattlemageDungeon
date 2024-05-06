@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc2bx7t0h5q7m"]
+[gd_scene load_steps=6 format=3 uid="uid://bc2bx7t0h5q7m"]
 
 [ext_resource type="Script" path="res://scripts/spell.gd" id="1_dhecg"]
 [ext_resource type="Texture2D" uid="uid://bd15w3v017p2f" path="res://assets/attacks_sprites/arrow_spell.png" id="2_ulaec"]
 [ext_resource type="PackedScene" uid="uid://bo3nmm1jdr4ci" path="res://scenes/spells/spell_attributes.tscn" id="3_06jim"]
+[ext_resource type="Script" path="res://scripts/spells/arrow.gd" id="4_euxl6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nt7dc"]
 radius = 3.0
@@ -21,10 +22,11 @@ shape = SubResource("CapsuleShape2D_nt7dc")
 metadata/_edit_lock_ = true
 
 [node name="SpellAttributes" parent="." instance=ExtResource("3_06jim")]
-damage = 10
+damage = 3
 speed = 250.0
-cooldown = 0.5
+cooldown = 2.0
 
 [node name="CustomBehavior" type="Node" parent="."]
+script = ExtResource("4_euxl6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

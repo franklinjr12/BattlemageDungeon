@@ -43,7 +43,7 @@ metadata/_edit_lock_ = true
 [node name="SpellAttributes" parent="." instance=ExtResource("3_l55v0")]
 damage = 5
 speed = 400.0
-cooldown = 0.3
+cooldown = 0.2
 
 [node name="CustomBehavior" type="Node" parent="."]
 
