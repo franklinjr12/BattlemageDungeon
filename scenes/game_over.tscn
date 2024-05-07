@@ -7,17 +7,17 @@ script = ExtResource("1_aqgcv")
 
 [node name="GameOverLabel" type="Label" parent="."]
 offset_left = 464.0
-offset_top = 224.0
+offset_top = 190.0
 offset_right = 556.0
-offset_bottom = 250.0
+offset_bottom = 216.0
 text = "GAME OVER"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 485.0
+offset_left = 375.0
 offset_top = 328.0
-offset_right = 541.0
+offset_right = 431.0
 offset_bottom = 336.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
@@ -86,3 +86,93 @@ text = "Combat time"
 [node name="CombatTimeValue" type="Label" parent="Control/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 text = " 0"
+
+[node name="GlobalStatistic" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 593.0
+offset_top = 328.0
+offset_right = 649.0
+offset_bottom = 336.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GlobalStatistic"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GlobalStatistic/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Kills" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Enemies killed "
+
+[node name="KillsValue" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " 0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GlobalStatistic/VBoxContainer"]
+layout_mode = 2
+
+[node name="MaxCharacterLevel" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Character level "
+
+[node name="MaxCharacterLevelValue" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = " 10"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="GlobalStatistic/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelsCleared" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Levels cleared "
+
+[node name="LevelsClearedValue" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = " 3"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="GlobalStatistic/VBoxContainer"]
+layout_mode = 2
+
+[node name="TotalExp" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Total exp "
+
+[node name="TotalExpValue" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = " 3"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="GlobalStatistic/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CombatTime" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Combat time"
+
+[node name="CombatTimeValue" type="Label" parent="GlobalStatistic/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = " 0"
+
+[node name="CurrentStatisticLabel" type="Label" parent="."]
+offset_left = 352.0
+offset_top = 224.0
+offset_right = 444.0
+offset_bottom = 250.0
+text = "Current run"
+
+[node name="GlobalStatisticLabel" type="Label" parent="."]
+offset_left = 571.0
+offset_top = 224.0
+offset_right = 663.0
+offset_bottom = 250.0
+text = "Global stats
+"

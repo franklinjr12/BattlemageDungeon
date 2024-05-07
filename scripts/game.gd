@@ -2,7 +2,7 @@ extends Node
 
 const DEFAULT_LEVEL_NAME = "world"
 const LEVEL_UP_SCENE_NAME = "levelup"
-const LEVELS_TO_LEVEL_UP_SCENE = 1
+const LEVELS_TO_LEVEL_UP_SCENE = 3
 
 var player_reference = null
 var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
@@ -23,6 +23,7 @@ func _ready():
 	connect_to_level_complete(DEFAULT_LEVEL_NAME)
 	statistics = get_node("Statistics")
 	statistics.connect_to_enemies_died_signal()
+	statistics.load_global_statistic()
 
 func set_player_reference():
 	player_reference = $Player
