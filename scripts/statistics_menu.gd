@@ -15,3 +15,4 @@ func _ready():
 
 func _on_start_button_pressed():
 	get_parent().call_deferred("add_child", game.instantiate())
+	queue_free()
