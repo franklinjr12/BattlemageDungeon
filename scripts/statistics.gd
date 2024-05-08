@@ -35,8 +35,10 @@ class GlobalStatistic:
 const save_file : String = "user://battlemage.save"
 
 func _ready():
-	get_parent().get_node("Player").connect("player_gained_experience", on_player_gained_experience)
-	get_parent().get_node("Player").connect("leveled_up", on_player_leveled_up)
+	var parent = get_parent()
+	if parent.name == "world":
+		parent.get_node("Player").connect("player_gained_experience", on_player_gained_experience)
+		parent.get_node("Player").connect("leveled_up", on_player_leveled_up)
 
 func increment_current_levels():
 	current_run_statistic.levels_cleared += 1
