@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8nhfjan4bgro"]
+
+[ext_resource type="Texture2D" uid="uid://dqppdst1nged1" path="res://assets/health_bar_back.png" id="1_eu8pm"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_s6lyw"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_s6lyw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 600.0
+offset_bottom = 334.0
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_eu8pm")
+
+[node name="Label" type="Label" parent="VBoxContainer/StartButton"]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 40.0
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatisticsButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_eu8pm")
+
+[node name="Label" type="Label" parent="VBoxContainer/StatisticsButton"]
+offset_right = 96.0
+offset_bottom = 40.0
+text = "Statistics"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 456.0
+offset_top = 72.0
+offset_right = 644.0
+offset_bottom = 98.0
+text = "SOME COOL LOGO HERE"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StatisticsButton" to="." method="_on_statistics_button_pressed"]
