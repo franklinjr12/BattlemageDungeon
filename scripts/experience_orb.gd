@@ -18,7 +18,9 @@ func _process(delta):
 
 func _on_player_entered(body):
 	if body is Player:
-		body.gain_experience(dropped_experience)
+		# had some issues with player dying and then receiving exp
+		if body != null:
+			body.gain_experience(dropped_experience)
 		queue_free()
 
 func set_dropped_experience(value : int):
