@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="BattlemageDungeon"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/start_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 
 [input]
 

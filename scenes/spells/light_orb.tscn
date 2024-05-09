@@ -9,6 +9,7 @@ blend_mode = 1
 [node name="LightOrb" instance=ExtResource("1_adln2")]
 
 [node name="SpellAttributes" parent="." index="2"]
+damage = 15
 speed = 200.0
 
 [node name="Glow" type="Sprite2D" parent="." index="5"]

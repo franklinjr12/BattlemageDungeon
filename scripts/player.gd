@@ -62,6 +62,9 @@ func _ready():
 	$JumpTimer.one_shot = true
 	$JumpTimer.wait_time = PLAYER_JUMP_TIMEOUT_SECONDS
 	sprites = [$IdleSprite, $AnimatedSprite2D, $FallingSprite, $JumpingSprite]
+	# there is a bug where when you restart the game player is flashing
+	for e in sprites:
+		e.material.set_shader_parameter("flash_modifier", 0)
 	player_speed = $CharacterAttributes.speed
 
 func _process(_delta):

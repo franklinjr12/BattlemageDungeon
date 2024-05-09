@@ -29,6 +29,7 @@ layout_mode = 2
 texture_normal = ExtResource("1_eu8pm")
 
 [node name="Label" type="Label" parent="VBoxContainer/StatisticsButton"]
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 40.0
 text = "Statistics"
