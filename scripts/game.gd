@@ -2,7 +2,7 @@ extends Node
 
 const DEFAULT_LEVEL_NAME = "world"
 const LEVEL_UP_SCENE_NAME = "levelup"
-const LEVELS_TO_LEVEL_UP_SCENE = 1
+const LEVELS_TO_LEVEL_UP_SCENE = 3
 
 var player_reference = null
 var scene_combat_script = preload("res://scripts/levels/combat_scene.gd")
